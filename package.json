@@ -1,14 +1,14 @@
 {
-  "name": "techfront",
-  "version": "1.0.0",
-  "description": "WebSite",
+  "name": "techfront-core",
+  "version": "0.0.0",
+  "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wpioneer/hackerstakc-core.git"
+    "url": "git+https://github.com/techfront/core.git"
   },
   "keywords": [
     "postcss",
