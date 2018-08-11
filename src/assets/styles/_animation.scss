@@ -1,0 +1,28 @@
+.animation {
+  &--pulse {
+    filter: none;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+    animation: animationRotate 3s ease infinite alternate;
+  }
+}
+
+@keyframes animationPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(.95);
+  }
+}
+
+@keyframes animationRotate {
+  0%, 100% {
+    transform: rotate(3deg)
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+}

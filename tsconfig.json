@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "skipDefaultLibCheck": true,
+    "declaration": true,
+    "target": "es5",
+    "typeRoots" : [ "./typings/index.d.ts" ]
+  },
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "vendor"
+  ]
+}

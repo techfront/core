@@ -1,0 +1,8 @@
+{{ define "content" }}
+<div>
+	<section class="padded">
+		<h1>Редактирование комментария</h1>
+		{{ template "form.html.got" . }}
+	</section>
+</div>
+{{ end }}

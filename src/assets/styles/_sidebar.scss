@@ -1,0 +1,29 @@
+.sidebar {
+	width: 100%;
+	&__inner {
+		margin: 26px;
+	}
+	&__item {
+		position: relative;
+		padding: 0 13px 13px;
+		margin-bottom: 10px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include breakpoint-md {
+	.sidebar {
+		lost-column: 4/12 0 0 flex;
+		&__inner {
+			margin: 26px 0 26px 15px;
+		}
+	}
+}
+
+@include breakpoint-lg {
+	.sidebar {
+		lost-column: 3/12 0 0 flex;
+	}
+}

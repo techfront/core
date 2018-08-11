@@ -1,0 +1,28 @@
+/**
+Функция вычисляет Rank.
+*/
+CREATE OR REPLACE FUNCTION rank(s numeric, d TIMESTAMP WITHOUT TIME ZONE) RETURNS numeric AS $$
+  BEGIN
+    RETURN (SELECT s/((EXTRACT(EPOCH from now() - d)/60/60+2)^1.8) );
+  END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+/**
+* Функция вычисляет Score.
+*/
+CREATE OR REPLACE FUNCTION score(u integer, d integer, f integer) RETURNS numeric AS $$
+  DECLARE
+    z numeric;
+    n numeric;
+    phat numeric;
+  BEGIN
+    IF(u IS NOT NULL AND u != 0 ) THEN
+       z := 1.96;
+       n := u + COALESCE(d, 0) + COALESCE(f*5, 0);
+       phat := u / n;
+       RETURN (SELECT (phat + z * z / (2 * n) - z * SQRT((phat * (1 - phat) + z * z / (4 * n)) / n)) / (1 + z * z / n));
+    ELSE
+      RETURN (SELECT 0);
+    END IF;
+  END;
+$$ LANGUAGE plpgsql IMMUTABLE;

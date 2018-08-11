@@ -1,0 +1,23 @@
+<div id="offer-id-{{ .offer.Id }}" class="js-offer-item offer__item offer__item--mini">
+    <div class="offer__meta">
+        <div class="offer__meta-container">
+            <div class="offer__meta-row">
+                <img src={{ .offer.DisplayAvatar 16}} srcset="{{ .offer.DisplayAvatar 32}} 2x" class="offer__meta-item offer__meta-user-img" width="16" height="16" />
+                <a href="/users/{{.offer.UserId}}" title="{{ .offer.UserData.Name }}" class="offer__meta-item offer__meta-user-link">{{ .offer.UserData.Name }}</a>
+                <span class="offer__meta-item offer__meta-user-action">{{ .offer.VerbСonjugation "опубликовал" }}</span>
+                <time class="offer__meta-item offer__meta-date" datetime="{{ isotime .offer.CreatedAt }}">{{timeago .offer.CreatedAt}}</time>
+            </div>
+        </div>
+    </div>
+
+    <div class="offer__heading">
+        <div class="offer__left">
+            <h3 class="offer__title">
+                <a href="{{.offer.URLShow}}" class="offer__title-link" rel="nofollow">{{ if .offer.IsFeatured }}<i class="emoji emoji--i-fire"></i> {{ end }}{{.offer.Name}}</a>
+            </h3>
+        </div>
+        <div class="offer__right">
+            <a href="/offers/{{.offer.Id}}"><i class="icon-comment-1"></i> {{.offer.DisplayCommentCount}}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,480 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/breakpoints";
+
+.user {
+  &__flex-container {
+    lost-flex-container: column;
+  }
+  &__admin-count {
+    font-size: 12px;
+    color: $gray-text-color;
+  }
+
+  &__profile {
+    &-hero {
+      display: flex;
+      &-item {
+        margin: 0 10px;
+      }
+    }
+    &-contact {
+      display: block;
+      width: 100%;
+      &-list {
+        lost-flex-container: row;
+        position: relative;
+        padding: 0 0 10px;
+        margin: 0;
+      }
+      &-item {
+        margin: 0 5px 5px 0;
+        list-style: none;
+      }
+      &-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $secondary-color;
+        height: 0;
+        width: 0;
+        line-height: 0;
+        border-radius: 50%;
+        padding: 16px;
+        font-size: 16px;
+        color: #FFF;
+        text-align: center;
+        &-title {
+          position: absolute;
+          left: 0;
+          bottom: -25px;
+          color: $gray-text-color;
+          font-size: 11px;
+          white-space: nowrap;
+          visibility: hidden;
+        }
+        &:hover {
+          .user__profile-contact-link-title {
+            visibility: visible;
+          }
+        }
+        & i {
+          font-size: 16px;
+          color: #FFF;
+        }
+        &--email {
+          background: $concrete-color;
+        }
+        &--phone {
+          background: $green-color;
+        }
+        &--website {
+          background: $primary-color;
+        }
+        &--github {
+          background: $github-brand-color;
+        }
+        &--telegram {
+          background: $telegram-brand-color;
+        }
+        &--whatsapp {
+          background: $whatsapp-brand-color;
+        }
+        &--skype {
+          background: $skype-brand-color;
+        }
+        &--viber {
+          background: $viber-brand-color;
+        }
+        &--vkontakte {
+          background: $vkontakte-brand-color;
+        }
+        &--twitter {
+          background: $twitter-brand-color;
+        }
+        &--facebook {
+          background: $facebook-brand-color;
+        }
+        &--youtube {
+          background: $youtube-brand-color;
+        }
+      }
+    }
+    &-name {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Verdana", "Geneva", "DejaVu Sans", "Bitstream Vera Sans", sans-serif;
+        font-size: 18px;
+        line-height: 13px;
+      }
+    &-fullname {
+        font-family: Georgia, "DejaVu serif", serif;
+        color: $gray-text-color;
+      }
+    &-avatar {
+        border-radius: 3px;
+      }
+    &-about {
+      color: $base-color;
+      line-height: 26px;
+     }
+    &-power {
+        outline: 0;
+        border: 0;
+        margin: 0;
+        color: $green-color;
+        font-size: 13px;
+        &-title {
+          color: $gray-text-color;
+          font-size: 11px;
+        }
+      }
+      &-score {
+        outline: 0;
+        border: 0;
+        margin: 0;
+        color: $yellow-color;
+        font-size: 13px;
+        &-title {
+          color: $gray-text-color;
+          font-size: 11px;
+        }
+      }
+      &-activity {
+        margin: 30px auto;
+      }
+      &-status {
+        margin-left: 5px;
+        &-online {
+          font-size: 11px;
+          color: $green-color;
+          margin-bottom: 15px;
+          &:before {
+            content: '\2022';
+            margin-right: 5px;
+          }
+        }
+        &-offline {
+          font-size: 11px;
+          color: $gray-text-color;
+          margin-bottom: 15px;
+          &:before {
+            margin-right: 5px;
+          }
+        }
+      }
+      &-actions {
+        margin-left: 94px;
+        &-button {
+          margin: 5px 0;
+        }
+      }
+  }
+
+    &__pagination {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    &-prev {
+      align-self: flex-start;
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 0;
+      border-radius: 3px;
+      background: #fdf2dc;
+      text-decoration: none;
+      color: $secondary-color;
+      padding: 10px 20px;
+      margin-right: 30px;
+      &:hover,
+      &:focus {
+        background: darken(#fdf2dc, 3%);
+      }
+
+    }
+    &-next {
+      align-self: flex-end;
+      flex-grow: 1;
+      flex-basis: 0;
+      flex-shrink: 0;
+      text-align: right;
+      border-radius: 3px;
+      background: #fdf2dc;
+      text-decoration: none;
+      color: $secondary-color;
+      padding: 10px 20px;
+      &:hover,
+      &:focus {
+        background: darken(#fdf2dc, 3%);
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+    margin: 26px 0;
+  }
+
+  &__contact-fields {
+    &-item {
+      margin: 3px 0;
+    }
+    &-add {
+      margin-top: 15px;
+      
+      &--lock {
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    }
+    &-remove {
+      padding: 5px 5px;
+      line-height: 1.475;
+      text-align: center;
+      display: inline-block;
+      border-radius: 3px;
+      border: 1px dashed $silver-color;
+      & i {
+        font-size: 14px;
+        color: $silver-color;
+      }
+      &:hover,
+      &:focus {
+        background: $secondary-color;
+        border: 1px solid $secondary-color;
+        & i {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  &__table {
+      margin: 26px 0;
+      overflow-x: auto;
+      &-flex {
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-items: stretch;
+        &-item {
+          min-width: 36px;
+          margin-right: 10px;
+        }
+      }
+      &-name {
+        margin: 0 0 3px;
+        &-link {
+          color: $secondary-color;
+          border-bottom: 1px solid #f7c5a8;
+          &:hover,
+          &:focus {
+            border: 0;
+          }
+        }
+      }
+      &-fullname {
+        display: block;
+        font-size: 11px;
+        margin: 0;
+      }
+      &-date {
+        display: block;
+        font-size: 11px;
+        margin: 0;
+      }
+      &-avatar {
+        margin-top: 6px;
+        border-radius: 3px;
+      }
+      &-power {
+        background: lighten($primary-color, 2%);
+        color: #fff;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+        border-radius: 3px;
+        font-size: 11px;
+        display: inline-block;
+        &--positive {
+          background: lighten($green-color, 2%);
+        }
+        &--negative {
+          background: lighten($secondary-color, 2%);
+        }
+      }
+      &-score {
+        background: lighten($primary-color, 2%);
+        color: #fff;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+        border-radius: 3px;
+        font-size: 11px;
+        display: inline-block;
+        &--positive {
+          background: lighten($green-color, 2%);
+        }
+        &--negative {
+          background: lighten($red-color, 2%);
+        }
+      }
+      &-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      &-cell {
+        text-align: center;
+        font-weight: normal;
+        padding: 0;
+        border-bottom: 1px solid $gray-border-color;
+        &--last {
+        }
+        &--first {
+          padding-left: 10px;
+          min-width: 230px;
+          text-align: left;
+        }
+        &-inner {
+          padding: 7px;
+          min-width: 50px;
+          &--active {
+            display: inline-block;
+            position: relative;
+            top: 1px;
+            background: #FFF;
+            padding: 7px 15px;
+            border-radius: 3px 3px 0 0;
+            border-top: 1px solid $gray-border-color;
+            border-left: 1px solid $gray-border-color;
+            border-right: 1px solid $gray-border-color;
+            & a {
+              color: $base-color;
+              &:hover,
+              &:focus {
+                color: $secondary-color;
+              }
+            }
+            & span {
+              color: $base-color;
+            }
+          }
+        }
+      }
+      &-row {
+        &:hover {
+          background: rgba(0, 0, 0, 0.02);
+        }
+      }
+      &-thead {
+        &-link {
+          border-bottom: 1px dotted $gray-text-color;
+          color: $gray-text-color;
+          &:hover,
+          &:focus {
+            border-bottom: 1px dotted $secondary-color;
+          }
+        }
+        &-icon {
+          color: $gray-text-color;
+          font-size: 12px;
+        }
+      }
+  }
+
+  &__index {
+    &-title {
+      font-size: 24px;
+      font-family: Georgia, "DejaVu serif", serif;
+      margin-bottom: 26px;
+      margin-top: 26px;
+      & i {
+        font-size: 20px;
+      }
+    }
+    &-title-gray {
+        color: $gray-text-color;
+    }
+  }
+
+  &__create {
+    &-title {
+      font-size: 24px;
+      font-family: Georgia, "DejaVu serif", serif;
+      margin-bottom: 26px;
+      margin-top: 26px;
+    }
+  }
+
+  &__login {
+    &-title {
+      font-size: 24px;
+      font-family: Georgia, "DejaVu serif", serif;
+      margin-bottom: 26px;
+      margin-top: 26px;
+    }
+  }
+
+  &__reset {
+    &-title {
+      font-size: 24px;
+      font-family: Georgia, "DejaVu serif", serif;
+      margin-bottom: 26px;
+      margin-top: 26px;
+    }
+  }
+
+  &__update {
+    &-title {
+      font-size: 24px;
+      font-family: Georgia, "DejaVu serif", serif;
+      margin-bottom: 26px;
+      margin-top: 26px;
+    }
+  }
+}
+
+@include breakpoint-sm {
+  .user {
+    &__profile {
+      &-contact {
+        margin: 20px 0 10px;
+      }
+      &-status {
+        margin: 0;
+      }
+      &-actions {
+        margin-left: 0;
+        text-align: right;
+      }
+    }
+    &__flex-container {
+      lost-flex-container: row;
+      &-item {
+        &--size {
+          &-2 {
+            lost-column: 2/12 0 15px flex;
+          }
+          &-3 {
+            lost-column: 3/12 0 15px flex;
+          }
+          &-4 {
+            lost-column: 4/12 0 15px flex;
+          }
+          &-5 {
+            lost-column: 5/12 0 15px flex;
+          }
+          &-6 {
+            lost-column: 6/12 0 15px flex;
+          }
+          &-7 {
+            lost-column: 7/12 0 15px flex;
+          }
+          &-9 {
+            lost-column: 9/12 0 15px flex;
+          }
+        }
+      }
+    }
+  }
+}

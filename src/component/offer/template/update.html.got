@@ -1,0 +1,8 @@
+{{ define "content" }}
+	<div class="offer">
+		<div class="offer__update">
+			<h4 class="offer__update-title">Обновление оффера: "{{ .offer.Name }}"</h4>
+			{{ template "form.html.got" . }}
+		</div>
+	</div>
+{{ end }}

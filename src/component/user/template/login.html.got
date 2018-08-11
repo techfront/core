@@ -1,0 +1,20 @@
+{{ define "content" }}
+    <div class="user">
+        <div class="user__login">
+            <form action="/login" method="post">
+                <h4 class="user__login-title">Вход</h4>
+                <div class="form-group">
+                    {{ field "Email или никнейм:" "user_email" "" "text" "class=input" }}
+                    {{ field "Пароль:" "user_password" "" "password" "type=password" "class=input" }}
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="button" value="Отправить">
+                </div>
+
+                <p>Забыли пароль? Восстановить доступ можно <a href="/reset">здесь</a>.</p>
+
+            </form>
+        </div>
+    </div>
+{{ end }}

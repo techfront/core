@@ -1,0 +1,29 @@
+<div class="topic__update-form">
+    <form method="post" class="resource-update-form">
+
+        <div class="form-group">
+            {{ field "Заголовок:" "topic_name" .topic.Name "class='input'"  }}
+            {{ textarea "Небольшой комментарий или описание, так же можно добавить хэш-теги:" "topic_text" .topic.Text "class='input input--type-textarea'" }}
+            {{ select "Выберите тег:" "topic_id_format" .topic.FormatId .topic.FormatOptions }}
+        </div>
+      
+        {{ if .current_user.Admin }}
+        <div class="form-group">
+            {{ field "Добавьте ссылку, если она необходима:" "topic_url" .topic.Url "class='input'" }}
+            {{ field "Ссылка на превью:" "topic_thumbnail" .topic.Thumbnail "class='input'" }}
+            {{ select "Статус:" "topic_status" .topic.Status .topic.StatusOptions }}
+            {{ field "ID пользователя:" "topic_id_user" .topic.UserId "class='input'" }}
+            {{ field "Колличество голосов за:" "topic_count_upvote" .topic.UpvoteCount "class='input'" }}
+            {{ field "Колличество голосов против:" "topic_count_downvote" .topic.DownvoteCount "class='input'" }}
+        </div>
+        {{ end }}
+
+        <div class="form__buttons">
+            <a class="button" method="back">Вернуться назад</a>
+            <input type="submit" class="button" value="Сохранить">
+        </div>
+        
+
+        <input name="authenticity_token" type="hidden" value="{{ .authenticity_token }}">
+    </form>
+</div>

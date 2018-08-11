@@ -1,0 +1,59 @@
+/** 
+* Хелпер переопределяет text-align.
+*/
+
+@import "../variables";
+@import "../breakpoints";
+
+.h-text {
+	&--xs {
+		&-right {
+			text-align: right;
+		}
+
+		&-left {
+			text-align: left;
+		}
+
+		&-center {
+			text-align: center;
+		}
+	}
+}
+
+@include breakpoint-max-md {
+	.h-text {
+		&--md {
+			&-right {
+				text-align: right;
+			}
+
+			&-left {
+				text-align: left;
+			}
+
+			&-center {
+				text-align: center;
+			}
+		}
+	}
+}
+
+
+@include breakpoint-max-sm {
+	.h-text {
+		&--sm {
+			&-right {
+				text-align: right;
+			}
+
+			&-left {
+				text-align: left;
+			}
+
+			&-center {
+				text-align: center;
+			}
+		}
+	}
+}

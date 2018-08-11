@@ -1,0 +1,67 @@
+@import "../variables";
+@import "../breakpoints";
+
+.fixed-widget {
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: -100px;
+  &__inner {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+  }
+  &__item {
+    margin: 15px auto;
+    width: 104px;
+    text-align: center;
+    position: relative;
+    &--about {
+      transition: height 0.2s;
+      overflow: hidden;
+    }
+    &--toolbar {
+      margin-bottom: 50px;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    font-weight: 400;
+  }
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #95a5a6;
+    cursor: pointer;
+  }
+  &__img {
+    display: block;
+    margin: 0 auto 5px;
+  }
+  &__text {
+    display: inline;
+    color: $gray-text-color;
+    text-decoration: none;
+    line-height: 26px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    font-weight: 400;
+    margin: 2px 0;
+    &:hover,
+    &:focus {
+      color: $primary-color;
+    }
+  }
+}
+
+@include breakpoint-lg {
+  .fixed-widget {
+    &__inner {
+      display: block;
+    }
+  }
+}

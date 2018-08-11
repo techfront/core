@@ -1,0 +1,153 @@
+.menu {
+  height: 55px;
+
+  &__list {
+    display: flex;
+    align-items: stretch;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    align-items: center;
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 5px 15px;
+    height: 45px;
+
+    &-newest-count {
+      display: inline-block;
+      font-size: 11px;
+      color: #FFF;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 4px;
+      border-radius: 3px;
+      background: $green-color;
+      &:before {
+        margin-right: 1px;
+        content: "+";
+      }
+    }
+
+    &-link {
+      font-size: 13px;
+      color: #FFF;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: #FFF;
+      }
+    }
+
+    &:hover,
+    &:focus {
+        border-bottom: 5px solid $blue-dark-color;
+        padding-bottom: 0;
+        & a {
+          color: #FFF;
+        }
+    }
+
+    &--active {
+      border-bottom: 5px solid $blue-dark-color;
+      padding-bottom: 0;
+      & a {
+        color: #FFF;
+      }
+    }
+  }
+}
+
+@include breakpoint-max-md {
+  .menu {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: $primary-color;
+    position: absolute;
+    z-index: 999999;
+    margin: 0 auto;
+
+    &:before {
+      background: linear-gradient(to left, rgba(255, 255, 255, 0), $primary-color 20%);
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 45px;
+      height: 55px;
+      z-index: 5;
+    }
+
+    &:after {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), $primary-color 20%);
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 24%;
+      height: 55px;
+      z-index: 5;
+    }
+
+    &__list {
+      padding: 0;
+      margin: 0 26px;
+      position: relative;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__close {
+      background: $blue-dark-color;
+      position: relative;
+      right: 26px;
+      z-index: 6;
+    }
+  }
+}
+
+
+@include breakpoint-md {
+  .menu {
+    position: relative;
+    &__close {
+      display: none;
+    }
+    &__item {
+
+      &-link {
+      }
+
+      &:hover,
+      &:focus {
+        border-bottom: 5px solid $blue-dark-color;
+        padding-bottom: 0;
+      }
+
+      &--active {
+        border-bottom: 5px solid $blue-dark-color;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

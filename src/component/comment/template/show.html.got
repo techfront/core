@@ -1,0 +1,5 @@
+{{ define "content" }}
+	<div>
+	    {{ template "comment.html.got" .}}
+	</div>
+{{ end }}

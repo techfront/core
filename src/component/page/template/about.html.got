@@ -1,0 +1,60 @@
+{{ define "content" }}
+<div class="page">
+ <div class="page__item">
+     <div class="page__header">
+         <h2 class="page__title">Немного о проекте</h2>
+     </div>
+     <div class="page__body">
+         <div class="page__text">
+             <img class="img img--left" src="/images/icons/64/www.png" srcset="/images/icons/@2x/www.png 2x" width="64" height="64">
+             <p>Техфронт - это сообщество энтузиастов, кому по нраву обсуждать технологии, исследования, стартапы и всё то, что происходит в сети.</p>
+
+             <h4>— Зачем всё это, если есть Хабр, TJ и другие сообщества?</h4>
+             <p>Думаю, многие стали замечать, что за всем этим трудно уследить. Техфронт собирает самые интересные новости из блогов и сообществ, каждую из которых можно обсудить, поднять в топ, либо отметить как не интересную.</p>
+
+             <h4>— Как это работает?</h4>
+             <p>Если описать в одном предложении, Техфронт - это социально-новостной сайт, где каждый может обсуждать и создавать новые топики, как на Reddit.</p>
+
+            <p>Весь контент собирается в несколько лент с продуманными алгоритмами сортировки. Сортировка главной ленты построена на основе интервала Вильсона, поэтому лучшие и актуальные топики будут удерживаться наверху до тех пор, пока их не заменят другие.</p>
+
+            <p>Так же, есть несколько ботов, которые оповещают людей в <a target="_blank" href="telegram:techfront">Telegram</a>, <a target="_blank" href="https://vk.com/techfront">VK</a>, <a target="_blank" href="https://twitter.com/techfrontorg">Twitter</a> и по E-mail в удобном формате.</p>
+
+            <!-- <div class="page__social-container">
+                <div class="page__social-container-item">
+                    <div class="page__social-container-item-thumbnail page__social-container-item-thumbnail--vkontakte">
+                        <i class="icon-vkontakte"></i>
+                    </div>
+                    <p class="page__social-container-item-text">Паблик в VK</p>
+                </div>
+                <div class="page__social-container-item">
+                    <div class="page__social-container-item-thumbnail page__social-container-item-thumbnail--telegram-channel">
+                        <i class="icon-paper-plane"></i>
+                    </div>
+                    <p class="page__social-container-item-text">Канал в Telegram</p>
+                </div>
+                <div class="page__social-container-item">
+                    <div class="page__social-container-item-thumbnail page__social-container-item-thumbnail--telegram-bot">
+                        <i class="icon-paper-plane"></i>
+                    </div>
+                    <p class="page__social-container-item-text">Бот в Telegram</p>
+                </div>
+                <div class="page__social-container-item">
+                    <div class="page__social-container-item-thumbnail page__social-container-item-thumbnail--twitter">
+                        <i class="icon-twitter"></i>
+                    </div>
+                    <p class="page__social-container-item-text">Лента в Twitter</p>
+                </div>
+            </div> -->
+            <h4>— Что такое топик?</h4>
+            <p>Это тема для обсуждения. В контексте TF, топик - это краткий анонс к новости, статье или проекту, состоящий из ссылки, информативного заголовка, превью и небольшого комментария.</p>
+
+             <h4>— Как сделать TF лучше?</h4>
+             <p>На сайт можно добавлять всё, что радует ваше интеллектуальное любопытство, а так же обсуждать интересные вещи в топиках. А если хотите помочь материально или в продвижении, то <a href="/ways-to-give" title="Способы поддержать проект">вот как это сделать.</a></p>
+         </div>
+     </div>
+     <div class="page__footer">
+         <div class="h-divider"></div>
+     </div>
+ </div>
+</div>
+{{ end }}

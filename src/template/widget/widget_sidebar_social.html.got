@@ -1,0 +1,48 @@
+<!-- Block Wrapper -->
+<div class="widget widget--type-social">
+    <div class="widget__header">
+        <h4 class="widget__title"><i class="emoji emoji--i-megaphone"></i> Соц. сообщества</h4>
+    </div>
+    <!-- Block Content -->
+    <div class="widget__content">
+        <!-- Social Block Body -->
+        <div class="social-widget">
+            <ul class="social-widget__list">
+                <li class="social-widget__item">
+                    <a href="https://vk.com/techfront" target="_blank">
+                        <span class="social-widget__item-link social-widget__item-link--vk">
+                            <i class="icon-vkontakte"></i>
+                        </span>
+                        <span class="social-widget__follow-button social-widget__follow-button--vk">
+                            ВК
+                        </span>
+                    </a>
+                </li>
+                <li class="social-widget__item">
+                    <a href="https://github.com/techfront" target="_blank">
+                        <span class="social-widget__item-link social-widget__item-link--github">
+                            <i class="icon-github"></i>
+                        </span>
+                        <span class="social-widget__follow-button social-widget__follow-button--github">
+                                Гитхаб
+                        </span>
+                    </a>
+                </li>
+                <li class="social-widget__item">
+                    <a href="https://twitter.com/techfrontorg" target="_blank">
+                        <span class="social-widget__item-link social-widget__item-link--twitter">
+                            <i class="icon-twitter"></i>
+                        </span>
+                        <span class="social-widget__follow-button social-widget__follow-button--twitter">
+                                Твиттер
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Block Footer -->
+    <div class="widget__footer">
+        <p class="widget__footer-text">Ещё есть <a href="https://telegram.me/techfront" target="_blank" class="widget__footer-text-link widget__footer-text-link--with-icon">канал</a> и <a href="https://telegram.me/techfrontbot" target="_blank" class="widget__footer-text-link widget__footer-text-link--with-icon">бот</a> в Телеграм</p>
+    </div>
+</div>

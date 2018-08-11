@@ -1,0 +1,71 @@
+{{ define "content" }}
+    <div class="topic">
+
+         <div class="topic__bar">
+            <ul class="topic__bar-list">
+                <li class="topic__bar-list-item topic__bar-list-item--active">
+                    <a href="/" title="" class="topic__bar-list-link">Всё</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-paper-plane"></i>
+                    <a href="/format/topic" title='Все материалы в формате "Топик"' class="topic__bar-list-link">Топики</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-newspaper"></i>
+                    <a href="/format/news" title='Все материалы в формате "Новость"' class="topic__bar-list-link">Новости</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-code-1"></i>
+                    <a href="/format/project" title='Все материалы в формате "Проект"' class="topic__bar-list-link">Проекты</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-help"></i>
+                    <a href="/format/question" title='Все материалы в формате "Вопрос"' class="topic__bar-list-link">Вопросы</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-megaphone-1"></i>
+                    <a href="/format/podcast" title='Все материалы в формате "Подкаст"' class="topic__bar-list-link">Подкасты</a>
+                </li>
+                <li class="topic__bar-list-item">
+                    <i class="icon-video"></i>
+                    <a href="/format/video" title='Все материалы в формате "Видео"' class="topic__bar-list-link">YouTube</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="topic__list topic__list--mini">
+
+            {{ $0 := . }}
+            {{ range $i, $m := .topics }}
+            {{ set $0 "i" $i }}
+            {{ set $0 "topic" $m }}
+
+            {{ if eq $i 8 }}
+            </div>
+
+            <div class="js-topic-index--block-container topic__block-container">
+                <div class="topic__block-container-inner">
+                    {{ template "widget_subscribe.html.got" . }}
+                </div>
+            </div>
+
+            <div class="topic__list topic__list--mini">
+                {{ end }}
+
+                {{ template "row_mini.html.got" $0 }}
+
+                {{ end }}
+            </div>
+
+        <div class="topic__pagination">
+            {{ if gt .prev_page -1 }}
+                <a href="{{ .prev_page_link }}" class="topic__pagination-prev">&#8592; Вернуться назад #{{ .prev_page }}</a>
+            {{ end }} 
+
+            {{ if eq (len .topics) 22 }}
+                <a href="{{ .next_page_link }}" class="topic__pagination-next">Просмотреть дальше #{{ .next_page }} &#8594;</a>
+            {{ end }}
+        </div>
+
+    </div>
+{{ end }}

@@ -1,0 +1,23 @@
+{{ define "content" }}
+<div class="user">
+    <div class="user__create">
+        <form action="/signup" method="post">
+            <h4 class="user__create-title">Регистрация</h4>
+
+            <div class="form-group">
+                {{ field "Никнейм:" "user_name" .user.Name "class=input" }}
+                {{ field "Email:" "user_email" .user.Email "class=input" }}
+                {{ field "Пароль:" "user_password" "" "password" "type=password" "class=input" }}
+            </div>
+
+            <div class="field">
+                <input type="submit" class="button " value="Отправить">
+            </div>
+
+            <p>Уже зарегистрированны? Тогда просто <a href="/login">войдите</a>.</p>
+
+            <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+        </form>
+    </div>
+</div>
+{{ end }}

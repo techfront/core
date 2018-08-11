@@ -1,0 +1,281 @@
+/* Таблицы */
+
+CREATE TABLE tf_comment (
+comment_id SERIAL NOT NULL,
+comment_created_at timestamp,
+comment_updated_at timestamp,
+comment_text text,
+comment_status integer NOT NULL DEFAULT 100,
+comment_id_user integer,
+comment_id_topic integer,
+comment_id_parent integer,
+comment_dotted_ids text,
+comment_count_upvote integer,
+comment_count_downvote integer,
+comment_count_flag integer
+);
+
+CREATE TABLE tf_topic (
+topic_id SERIAL NOT NULL,
+topic_created_at timestamp,
+topic_updated_at timestamp,
+topic_name text,
+topic_url text,
+topic_text text,
+topic_thumbnail text,
+topic_status integer NOT NULL DEFAULT 100,
+topic_id_format integer NOT NULL DEFAULT 0,
+topic_id_user integer,
+topic_count_upvote integer,
+topic_count_downvote integer,
+topic_count_flag integer,
+topic_count_comment integer,
+topic_vk_posted_at timestamp,
+topic_fb_posted_at timestamp,
+topic_tw_posted_at timestamp,
+topic_newsletter_at timestamp
+);
+
+CREATE TABLE tf_upvote (
+upvote_id SERIAL NOT NULL,
+upvote_created_at timestamp,
+upvote_id_comment integer,
+upvote_id_topic integer,
+upvote_id_user integer,
+upvote_ip text
+);
+
+CREATE TABLE tf_downvote (
+downvote_id SERIAL NOT NULL,
+downvote_created_at timestamp,
+downvote_id_comment integer,
+downvote_id_topic integer,
+downvote_id_user integer,
+downvote_ip text
+);
+
+CREATE TABLE tf_flag (
+flag_id SERIAL NOT NULL,
+flag_created_at timestamp,
+flag_id_comment integer,
+flag_id_topic integer,
+flag_id_user integer,
+flag_ip text
+);
+
+CREATE TABLE tf_user (
+user_id SERIAL NOT NULL,
+user_created_at timestamp,
+user_updated_at timestamp,
+user_visited_at timestamp,
+user_email text UNIQUE,
+user_name text,
+user_fullname text,
+user_encrypted_password text,
+user_avatar text,
+user_text text,
+user_status integer NOT NULL DEFAULT 100,
+user_gender integer NOT NULL DEFAULT 0,
+user_role integer,
+user_power real NOT NULL DEFAULT 1,
+user_score real NOT NULL DEFAULT 1,
+user_reset_token text,
+user_create_token text,
+user_create_invite text,
+user_count_comment integer,
+user_count_topic integer
+);
+
+CREATE TABLE tf_user_contact (
+user_contact_id SERIAL NOT NULL,
+user_contact_id_user integer,
+user_contact_name text,
+user_contact_value text
+);
+
+CREATE TABLE tf_user_favorite (
+user_favorite_id SERIAL NOT NULL,
+user_favorite_created_at timestamp,
+user_favorite_id_user integer,
+user_favorite_id_topic integer
+);
+
+/* Настройка прав */
+ALTER TABLE tf_comment OWNER TO postgres_user;
+ALTER TABLE tf_flag OWNER TO postgres_user;
+ALTER TABLE tf_user OWNER TO postgres_user;
+ALTER TABLE tf_upvote OWNER TO postgres_user;
+ALTER TABLE tf_downvote OWNER TO postgres_user;
+ALTER TABLE tf_flag OWNER TO postgres_user;
+ALTER TABLE tf_topic OWNER TO postgres_user;
+ALTER TABLE tf_user_contact OWNER TO postgres_user;
+ALTER TABLE tf_user_favorite OWNER TO postgres_user;
+
+/* Миграция 2017-01-15 */
+
+DROP TABLE fragmenta_metadata;
+
+ALTER TABLE users RENAME TO tf_user;
+ALTER TABLE comments RENAME TO tf_comment;
+ALTER TABLE topics RENAME TO tf_topic;
+ALTER TABLE flags RENAME TO tf_flag;
+ALTER TABLE votes RENAME TO tf_vote;
+
+ALTER TABLE tf_comment RENAME COLUMN id to comment_id;
+ALTER TABLE tf_comment RENAME COLUMN created_at to comment_created_at;
+ALTER TABLE tf_comment RENAME COLUMN updated_at to comment_updated_at;
+ALTER TABLE tf_comment RENAME COLUMN parent_id to comment_parent_id;
+ALTER TABLE tf_comment RENAME COLUMN dotted_ids to comment_dotted_ids;
+ALTER TABLE tf_comment RENAME COLUMN level to comment_level;
+ALTER TABLE tf_comment RENAME COLUMN text to comment_text;
+ALTER TABLE tf_comment RENAME COLUMN user_id to comment_user_id;
+ALTER TABLE tf_comment RENAME COLUMN topic_id to comment_topic_id;
+ALTER TABLE tf_comment RENAME COLUMN points to comment_points;
+
+ALTER TABLE tf_topic RENAME COLUMN id to topic_id;
+ALTER TABLE tf_topic RENAME COLUMN created_at to topic_created_at;
+ALTER TABLE tf_topic RENAME COLUMN updated_at to topic_updated_at;
+ALTER TABLE tf_topic RENAME COLUMN status to topic_status;
+ALTER TABLE tf_topic RENAME COLUMN name to topic_name;
+ALTER TABLE tf_topic RENAME COLUMN url to topic_url;
+ALTER TABLE tf_topic RENAME COLUMN summary to topic_summary;
+ALTER TABLE tf_topic RENAME COLUMN points to topic_points;
+ALTER TABLE tf_topic RENAME COLUMN thumbnail to topic_thumbnail;
+ALTER TABLE tf_topic RENAME COLUMN tag to topic_tag_id;
+ALTER TABLE tf_topic RENAME COLUMN user_id to topic_user_id;
+ALTER TABLE tf_topic RENAME COLUMN comment_count to topic_comment_count;
+ALTER TABLE tf_topic RENAME COLUMN vk_posted_at to topic_vk_posted_at;
+ALTER TABLE tf_topic RENAME COLUMN fb_posted_at to topic_fb_posted_at;
+ALTER TABLE tf_topic RENAME COLUMN tw_posted_at to topic_tw_posted_at;
+
+ALTER TABLE tf_vote RENAME COLUMN created_at to vote_created_at;
+ALTER TABLE tf_vote RENAME COLUMN comment_id to vote_comment_id;
+ALTER TABLE tf_vote RENAME COLUMN topic_id to vote_topic_id;
+ALTER TABLE tf_vote RENAME COLUMN user_id to vote_user_id;
+ALTER TABLE tf_vote RENAME COLUMN user_ip to vote_user_ip;
+ALTER TABLE tf_vote RENAME COLUMN points to vote_points;
+
+ALTER TABLE tf_flag RENAME COLUMN created_at to flag_created_at;
+ALTER TABLE tf_flag RENAME COLUMN comment_id to flag_comment_id;
+ALTER TABLE tf_flag RENAME COLUMN topic_id to flag_topic_id;
+ALTER TABLE tf_flag RENAME COLUMN user_id to flag_user_id;
+ALTER TABLE tf_flag RENAME COLUMN user_ip to flag_user_ip;
+ALTER TABLE tf_flag RENAME COLUMN points to flag_points;
+
+ALTER TABLE tf_user RENAME COLUMN id to user_id;
+ALTER TABLE tf_user RENAME COLUMN created_at to user_created_at;
+ALTER TABLE tf_user RENAME COLUMN updated_at to user_updated_at;
+ALTER TABLE tf_user RENAME COLUMN status to user_status;
+ALTER TABLE tf_user RENAME COLUMN role to user_role;
+ALTER TABLE tf_user RENAME COLUMN email to user_email;
+ALTER TABLE tf_user RENAME COLUMN name to user_name;
+ALTER TABLE tf_user RENAME COLUMN avatar to user_avatar;
+ALTER TABLE tf_user RENAME COLUMN summary to user_summary;
+ALTER TABLE tf_user RENAME COLUMN encrypted_password to user_encrypted_password;
+ALTER TABLE tf_user RENAME COLUMN reset_secret to user_reset_token;
+ALTER TABLE tf_user RENAME COLUMN points to user_points;
+
+ALTER TABLE tf_user ADD COLUMN user_fullname text;
+ALTER TABLE tf_user ADD COLUMN user_gender integer NOT NULL DEFAULT 0;
+
+ALTER TABLE tf_comment DROP COLUMN rank;
+ALTER TABLE tf_comment RENAME COLUMN comment_points to comment_count_upvote;
+ALTER TABLE tf_comment ADD COLUMN comment_count_downvote integer;
+ALTER TABLE tf_comment ADD COLUMN comment_count_flag integer;
+ALTER TABLE tf_comment RENAME COLUMN comment_user_id to comment_id_user;
+ALTER TABLE tf_comment RENAME COLUMN comment_topic_id to comment_id_topic;
+ALTER TABLE tf_comment RENAME COLUMN comment_parent_id to comment_id_parent;
+
+ALTER TABLE tf_topic DROP COLUMN rank;
+ALTER TABLE tf_topic RENAME COLUMN topic_points to topic_count_upvote;
+ALTER TABLE tf_topic ADD COLUMN topic_count_downvote integer;
+ALTER TABLE tf_topic ADD COLUMN topic_count_flag integer;
+ALTER TABLE tf_topic RENAME COLUMN topic_summary to topic_text;
+ALTER TABLE tf_topic RENAME COLUMN topic_user_id to topic_id_user;
+ALTER TABLE tf_topic RENAME COLUMN topic_tag_id to topic_id_tag;
+ALTER TABLE tf_topic RENAME COLUMN topic_comment_count to topic_count_comment;
+
+ALTER TABLE tf_user RENAME COLUMN user_points to user_score;
+ALTER TABLE tf_user ALTER COLUMN user_score TYPE real, ALTER COLUMN user_score SET DEFAULT 1, ALTER COLUMN user_score SET NOT NULL;
+ALTER TABLE tf_user ADD COLUMN user_power real NOT NULL DEFAULT 1;
+ALTER TABLE tf_user RENAME COLUMN user_summary to user_text;
+ALTER TABLE tf_user ADD COLUMN user_count_topic integer;
+ALTER TABLE tf_user ADD COLUMN user_count_comment integer;
+
+ALTER TABLE tf_vote DROP COLUMN vote_points;
+ALTER TABLE tf_vote RENAME COLUMN vote_user_ip to vote_ip;
+ALTER TABLE tf_vote RENAME COLUMN vote_user_id to vote_id_user;
+ALTER TABLE tf_vote RENAME COLUMN vote_comment_id to vote_id_comment;
+ALTER TABLE tf_vote RENAME COLUMN vote_topic_id to vote_id_topic;
+
+ALTER TABLE tf_flag DROP COLUMN flag_points;
+ALTER TABLE tf_flag RENAME COLUMN flag_user_ip to flag_ip;
+ALTER TABLE tf_flag RENAME COLUMN flag_user_id to flag_id_user;
+ALTER TABLE tf_flag RENAME COLUMN flag_comment_id to flag_id_comment;
+ALTER TABLE tf_flag RENAME COLUMN flag_topic_id to flag_id_topic;
+
+CREATE TABLE tf_downvote (
+downvote_created_at timestamp,
+downvote_id_comment integer,
+downvote_id_topic integer,
+downvote_id_user integer,
+downvote_ip text
+);
+
+ALTER TABLE tf_upvote RENAME COLUMN vote_created_at to upvote_created_at;
+ALTER TABLE tf_upvote RENAME COLUMN vote_ip to upvote_ip;
+ALTER TABLE tf_upvote RENAME COLUMN vote_id_user to upvote_id_user;
+ALTER TABLE tf_upvote RENAME COLUMN vote_id_comment to upvote_id_comment;
+ALTER TABLE tf_upvote RENAME COLUMN vote_id_topic to upvote_id_topic;
+
+ALTER TABLE tf_upvote ADD COLUMN upvote_id SERIAL NOT NULL;
+ALTER TABLE tf_downvote ADD COLUMN downvote_id SERIAL NOT NULL;
+ALTER TABLE tf_flag ADD COLUMN flag_id SERIAL NOT NULL;
+
+ALTER TABLE tf_user ALTER COLUMN user_score TYPE real;
+ALTER TABLE tf_user ALTER COLUMN user_power TYPE real;
+
+ALTER TABLE tf_topic RENAME COLUMN topic_id_tag to topic_id_format;
+
+ALTER TABLE tf_comment ADD COLUMN comment_status integer;
+
+ALTER TABLE tf_user ADD COLUMN user_visited_at timestamp;
+
+UPDATE tf_topic SET topic_status = 100;
+UPDATE tf_user SET user_status = 100;
+UPDATE tf_comment SET comment_status = 100;
+
+ALTER TABLE tf_user ALTER COLUMN user_status SET NOT NULL, ALTER COLUMN user_status SET DEFAULT 100;
+ALTER TABLE tf_topic ALTER COLUMN topic_status SET NOT NULL, ALTER COLUMN topic_status SET DEFAULT 100;
+ALTER TABLE tf_comment ALTER COLUMN comment_status SET NOT NULL, ALTER COLUMN comment_status SET DEFAULT 100;
+
+ALTER TABLE tf_user ADD COLUMN user_create_token text;
+
+UPDATE tf_topic SET topic_id_format = 0;
+ALTER TABLE tf_topic ALTER COLUMN topic_id_format SET NOT NULL, ALTER COLUMN topic_id_format SET DEFAULT 0;
+
+.. 12.08.2017
+ALTER TABLE tf_user ALTER COLUMN user_count_comment TYPE integer;
+ALTER TABLE tf_user ALTER COLUMN user_count_topic TYPE integer;
+
+UPDATE tf_user SET user_count_comment = 0 WHERE user_count_comment IS NULL;
+UPDATE tf_user SET user_count_topic = 0 WHERE user_count_topic IS NULL;
+
+ALTER TABLE tf_user ALTER COLUMN user_count_topic SET NOT NULL, ALTER COLUMN user_count_topic SET DEFAULT 0;
+ALTER TABLE tf_user ALTER COLUMN user_count_comment SET NOT NULL, ALTER COLUMN user_count_comment SET DEFAULT 0;
+
+ALTER TABLE tf_topic ADD COLUMN topic_newsletter_at timestamp;
+
+CREATE TABLE tf_user_contact (
+user_contact_id SERIAL NOT NULL,
+user_contact_id_user integer,
+user_contact_name text,
+user_contact_value text
+);
+
+CREATE TABLE tf_user_favorite (
+user_favorite_id SERIAL NOT NULL,
+user_favorite_created_at timestamp,
+user_favorite_id_user integer,
+user_favorite_id_topic integer
+);

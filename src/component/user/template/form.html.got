@@ -1,0 +1,63 @@
+<div class="user__update-form">
+    <form method="post" class="resource-update-form">
+ 
+            <h4>Аккаунт:</h4>
+
+            {{ if .current_user.Admin }}
+            {{ field "Никнейм:" "user_name" .user.Name "class='input'" }}
+            {{ select "Статус:" "user_status" .user.Status .user.StatusOptions }}
+            {{ select "Роль:" "user_role" .user.Role .user.RoleOptions }}
+            {{ end }}
+
+            {{ field "Email:" "user_email" .user.Email "class='input'" }}
+            {{ field "Пароль:" "user_password" "" "password" "type=password" "class='input'" }}
+
+            <div class="h-divider"></div>
+
+            <h4>Профиль:</h4>
+
+            {{ field "Имя:" "user_fullname" .user.FullName "class='input'" }}
+            {{ select "Гендерная принадлежность:" "user_gender" .user.Gender .user.GenderOptions }}
+
+            <div class="form__group">
+                <label>Немного о себе:</label>
+                <textarea name="user_text" class="input input--type-textarea" id="profile-content-textarea">{{.user.Text}}</textarea>
+            </div>
+
+            <h4>Контакты:</h4>
+
+            <div class="user__contact-fields">
+                <div id="user-contact-fields-list" class="user__contact-fields-list">
+                {{ range $i, $m := .user.Contacts }}
+                    <div id="user-contact-field-id-{{ $i }}" class="user__contact-fields-item">
+                    <select class="js-user--contact-field-change-type select" data-field-id="user-contact-field-id-{{ $i }}">
+                        <option value="user_contact_email" {{ if $m.IsSelected "email" }}selected="selected"{{ end }}>Почта</option>
+                        <option value="user_contact_phone" {{ if $m.IsSelected "phone" }}selected="selected"{{ end }}>Телефон</option>      
+                        <option value="user_contact_website" {{ if $m.IsSelected "website" }}selected="selected"{{ end }}>Сайт</option>
+                        <option value="user_contact_github" {{ if $m.IsSelected "github" }}selected="selected"{{ end }}>Github</option>
+                        <option value="user_contact_telegram" {{ if $m.IsSelected "telegram" }}selected="selected"{{ end }}>Telegram</option>
+                        <option value="user_contact_whatsapp" {{ if $m.IsSelected "whatsapp" }}selected="selected"{{ end }}>WhatsApp</option>
+                        <option value="user_contact_viber" {{ if $m.IsSelected "viber" }}selected="selected"{{ end }}>Viber</option>
+                        <option value="user_contact_skype" {{ if $m.IsSelected "skype" }}selected="selected"{{ end }}>Skype</option>
+                        <option value="user_contact_vkontakte" {{ if $m.IsSelected "vkontakte" }}selected="selected"{{ end }}>ВКонтакте</option>
+                        <option value="user_contact_twitter" {{ if $m.IsSelected "twitter" }}selected="selected"{{ end }}>Twitter</option>
+                        <option value="user_contact_youtube" {{ if $m.IsSelected "youtube" }}selected="selected"{{ end }}>YouTube</option>
+                        <option value="user_contact_facebook" {{ if $m.IsSelected "facebook" }}selected="selected"{{ end }}>Facebook</option>
+                    </select>
+                    <input type="text" class="input" name={{ $m.GetFieldName }} value={{ $m.Value }}>
+                    <a href="#" class="js-user--contact-fields-remove user__contact-fields-remove" data-field-id="user-contact-field-id-{{ $i }}"><i class="icon-trash-empty"></i></a>
+                    </div>
+                {{ end }}
+                </div>
+                <a class="js-user--contact-fields-add button button--theme-shy-dashed user__contact-fields-add" href="#">Добавить</a>
+            </div>
+
+            <div class="h-divider"></div>
+
+        <div class="form__buttons">
+            <input type="submit" class="button" value="Сохранить">
+        </div>
+
+        <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+    </form>
+</div>

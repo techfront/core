@@ -1,0 +1,11 @@
+<form class="comment__add {{if not .comment.Id}}comment__add--root{{end}}" action="/submit/comment" method="post">
+    <div class="form-group">
+        <textarea name="comment_text" placeholder="Ваш комментарий к «{{ .topic.Name }}» ..." rows="4" class="input input--type-textarea"></textarea>
+    </div>
+    <input type="hidden" name="comment_id_topic" value="{{.topic.Id}}">
+    {{ if .comment.Id }}
+    	<input type="hidden" name="comment_id_parent" value="{{.comment.Id}}">
+    {{ end }}
+    <input type=submit value="Отправить ..." class="button right">
+    <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+</form>

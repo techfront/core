@@ -1,0 +1,42 @@
+@mixin breakpoint-xs {
+	@content;
+}
+@mixin breakpoint-sm {
+	@media screen and (min-width: $layout-width-sm) {
+		@content;
+	}
+}
+@mixin breakpoint-max-sm {
+	@media screen and (max-width: $layout-width-max-sm) {
+		@content;
+	}
+}
+@mixin breakpoint-md {
+	@media screen and (min-width: $layout-width-md) {
+		@content;
+	}
+}
+@mixin breakpoint-max-md {
+	@media screen and (max-width: $layout-width-max-md) {
+		@content;
+	}
+}
+@mixin breakpoint-lg {
+	@media screen and (min-width: $layout-width-lg) {
+		@content
+	}
+}
+@mixin breakpoint-max-lg {
+	@media screen and (max-width: $layout-width-max-lg) {
+		@content
+	}
+}
+
+@mixin breakpoint-2x {
+	@media only screen and (-o-min-device-pixel-ratio: 5/4),
+       	only screen and (-webkit-min-device-pixel-ratio: 1.25),
+       	only screen and (min-device-pixel-ratio: 1.25),
+       	only screen and (min-resolution: 1.25dppx) {
+		@content
+	}
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+{{ template "meta.html.got" . }}
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__inner">
+                {{ template "header.html.got" . }}
+            </div>
+        </header>
+
+        <div class="layout">
+            <div class="content">
+                <div class="content__inner">
+
+                    {{ if .message }}
+                    <div class="{{ .message_class }} content__message content__message--type-{{ .message_type }}">
+                        <div class="content__message-inner">
+                        {{ cleanhtml .message }}
+                        </div>
+                    </div>
+                    {{ end }}
+
+                    {{ template "content" . }}
+                </div>
+            </div>
+
+            {{ template "sidebar.html.got" . }}
+
+            {{ template "widget_fixed.html.got" . }}
+        </div>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                {{ template "footer.html.got" . }}
+            </div>
+        </footer>
+    </div>
+
+    {{ template "modal.html.got" . }}
+
+    {{ template "includes.html.got" . }}
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73379983-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
+</html>

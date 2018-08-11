@@ -1,0 +1,27 @@
+<div class="offer__update-form">
+    <form method="post" class="resource-update-form">
+
+        <div class="form-group">
+            {{ field "Заголовок:" "offer_name" .offer.Name "class='input'"  }}
+            {{ textarea "Подробности:" "offer_text" .offer.Text "class='input input--type-textarea'" }}
+            {{ select "Формат:" "offer_id_format" .offer.FormatId .offer.FormatOptions }}
+        </div>
+      
+        {{ if .current_user.Admin }}
+        <div class="form-group">
+            {{ select "Статус:" "offer_status" .offer.Status .offer.StatusOptions }}
+            {{ field "ID пользователя:" "offer_id_user" .offer.UserId "class='input'" }}
+            {{ field "Колличество голосов за:" "offer_count_upvote" .offer.UpvoteCount "class='input'" }}
+            {{ field "Колличество голосов против:" "offer_count_downvote" .offer.DownvoteCount "class='input'" }}
+        </div>
+        {{ end }}
+
+        <div class="form__buttons">
+            <a class="button" method="back">Вернуться назад</a>
+            <input type="submit" class="button" value="Сохранить">
+        </div>
+        
+
+        <input name="authenticity_token" type="hidden" value="{{ .authenticity_token }}">
+    </form>
+</div>

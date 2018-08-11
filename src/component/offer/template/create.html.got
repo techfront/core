@@ -1,0 +1,18 @@
+{{ define "content" }}
+    <div class="offer">
+        <div class="offer__create">
+        <form method="post">
+            <h4 class="offer__create-title">Создать оффер</h4>
+            <div class="form-group">
+                {{ field "Заголовок:" "offer_name" .offer.Name "class='js-offer-submit--name-field input'" }}
+                {{ textarea "Подробности:" "offer_text" .offer.Text "class='input input--type-textarea'" }}
+                {{ select "Формат:" "offer_id_format" .offer.FormatId .offer.FormatOptions }}
+            </div>
+            <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+            <div class="form__buttons">
+                <input type="submit" class="button" value="Отправить">
+            </div>
+        </form>
+        </div>
+    </div>
+{{ end }}

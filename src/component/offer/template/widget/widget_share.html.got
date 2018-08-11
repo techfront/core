@@ -1,0 +1,35 @@
+<div class="widget widget--type-share">
+    <div class="widget__content">
+
+        <div class="share-widget">
+            <ul class="share-widget__list">
+                <li class="share-widget__item">
+                    <a href="https://vk.com/share.php?url=https://techfront.org{{ .offer.URLShow }}&title={{ .offer.Name }}" class="js-widget--share share-widget__item-link share-widget__item-link--vk">
+                        <i class="icon-vkontakte"></i>
+                    </a>
+                </li>
+                <li class="share-widget__item">
+                    <a href="https://twitter.com/share?url=https://techfront.org{{ .offer.URLShow }}&text={{ .offer.Name }}" class="js-widget--share share-widget__item-link share-widget__item-link--twitter">
+                        <i class="icon-twitter"></i>
+                    </a>
+                </li>
+                <li class="share-widget__item">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://techfront.org{{ .offer.URLShow }}" class="js-widget--share share-widget__item-link share-widget__item-link--facebook">
+                        <i class="icon-facebook"></i>
+                    </a>
+                </li>
+                <li class="share-widget__item">
+                    <a href="https://getpocket.com/edit?url=https://techfront.org{{ .offer.URLShow }}" class="js-widget--share share-widget__item-link share-widget__item-link--pocket">
+                        <i class="icon-get-pocket"></i>
+                    </a>
+                </li>
+                <li class="share-widget__item">
+                    <a href="https://plus.google.com/share?url=https://techfront.org{{ .offer.URLShow }}" class="js-widget--share share-widget__item-link share-widget__item-link--google-plus">
+                        <i class="icon-gplus"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

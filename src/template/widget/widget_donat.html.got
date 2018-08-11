@@ -1,0 +1,17 @@
+<!-- Block Wrapper -->
+<div class="widget widget--type-donat">
+    <div class="widget__header">
+        <h4 class="widget__title">Поддержать сообщество</h4>
+    </div>
+    <!-- Block Content -->
+    <div class="widget__content">
+        <!-- Donat Block Body -->
+        <div class="donat-widget">
+            <img src="/images/donat.png" width="260px" />
+        </div>
+    </div>
+    <!-- Block Footer -->
+    <div class="widget__footer">
+        <p class="widget__footer-text">Все средства будут потрачены на хостинг и продвижение в массы.</p>
+    </div>
+</div>

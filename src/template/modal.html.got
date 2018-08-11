@@ -1,0 +1,105 @@
+<!-- Начать обсуждение -->
+<div class="js-modal-target--user-create modal modal--hidden">
+    <div class="modal__body">
+
+        <div class="modal__close">
+            <a class="js-modal-hide modal__close-link" href="#" data-modal=".js-modal-target--user-create">×</a>
+        </div>
+
+        <div class="modal__flex-container modal__flex-container--no-spacing">
+            <div class="modal__flex-container-item modal__flex-container-item--size-6">
+
+                <div class="modal__hero">
+                    <div class="modal__hero-inner">
+                        <h4 class="modal__hero-title">Создание профиля</h4>
+                        <p class="modal__hero-descr">Техфронт - это сообщество энтузиастов, кому по нраву обсуждать технологии, стартапы и всё то, что происходит в сети. Присоеденяйся и ты!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal__flex-container-item modal__flex-container-item--size-6">
+
+                <div class="modal__content">
+                    <div class="modal__content-inner">
+                        <form action="/signup" method="post">
+                            <div class="form-group">
+                                <div class="field">
+                                    {{ field "" "user_name" "" "placeholder='Никнейм...'" "class='input input--transparent'" }}
+                                </div>
+
+                                <div class="field">
+                                    {{ field "" "user_email" "" "placeholder='Почта...'" "class='input input--transparent'" }}
+                                </div>
+
+                                <div class="field">
+                                    <input name="user_password" value="" placeholder="Пароль..." password="" class="input input--transparent" type="password">
+                                    <small class="field__help">Длина пароля не менее 8 символов. Будет лучше, если комбинировать символы верхнего и нижнего регистра.</small>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <input type="submit" class="button " value="Отправить">
+                            </div>
+
+                            <p class="modal__content-descr">Уже зарегистрированны?</br> Тогда просто <a class="js-modal-show" href="/login" data-modal=".js-modal-target--user-login">войдите</a>.</p>
+
+                            <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Войти -->
+<div class="js-modal-target--user-login modal modal--hidden">
+    <div class="modal__body">
+
+        <div class="modal__close">
+            <a class="js-modal-hide modal__close-link" href="#" data-modal=".js-modal-target--user-login">×</a>
+        </div>
+
+        <div class="modal__flex-container modal__flex-container--no-spacing">
+            <div class="modal__flex-container-item modal__flex-container-item--size-6">
+
+                <div class="modal__hero">
+                    <div class="modal__hero-inner">
+                        <h4 class="modal__hero-title">Войти на сайт</h4>
+                        <p class="modal__hero-descr">TF - это сообщество тех, кому нравится обсуждать технологии, проекты и всё то, что происходит в сети. Присоеденяйся и ты!</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal__flex-container-item modal__flex-container-item--size-6">
+
+                <div class="modal__content">
+                    <div class="modal__content-inner">
+
+                        <form action="/login" method="post">
+                            <div class="form-group">
+                                <div class="field">
+                                    {{ field "" "user_email" "" "placeholder='Почта или никнейм...'" "class='input input--transparent'" }}
+                                </div>
+                                <div class="field">
+                                    <input name="user_password" value="" placeholder="Пароль..." password="" class="input input--transparent" type="password">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <input type="submit" class="button" value="Отправить">
+                            </div>
+
+                            <p class="modal__content-descr">Забыли пароль? Восстановить доступ можно <a href="/reset">здесь</a>.</p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

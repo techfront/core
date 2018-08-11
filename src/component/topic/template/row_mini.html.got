@@ -1,0 +1,126 @@
+<div id="topic-id-{{ .topic.Id }}" class="js-topic-item topic__item topic__item--mini">
+    <div class="topic__meta">
+        <div class="topic__meta-container">
+            <div class="topic__meta-row">
+                <img src={{ .topic.DisplayAvatar 16}} srcset="{{ .topic.DisplayAvatar 32}} 2x" class="topic__meta-item topic__meta-user-img" width="16" height="16" />
+                <a href="/users/{{.topic.UserId}}" title="{{ .topic.UserData.Name }}" class="topic__meta-item topic__meta-user-link">{{ .topic.UserData.Name }}</a>
+                <span class="topic__meta-item topic__meta-user-action">{{ .topic.DisplayAction }}</span>
+                <time class="topic__meta-item topic__meta-date" datetime="{{ isotime .topic.CreatedAt }}">{{timeago .topic.CreatedAt}}</time>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic__heading">
+        <div class="topic__flex-container topic__flex-container--no-spacing">
+            <div class="topic__flex-container-item topic__flex-container-item--size-4 topic__flex-container-item--width-120">
+                {{ if .topic.Thumbnail }}
+                <div class="topic__thumbnail">
+                    <a href="{{.topic.DestinationURL}}" class="topic__thumbnail-link" target="_blank" rel="nofollow">
+                        <img class="topic__thumbnail-img" src={{ resizeimage .topic.Thumbnail "105x75"}} srcset='{{ resizeimage .topic.Thumbnail "210x150"}} 2x' alt={{.topic.Name}} width="105" height="75" />
+                    </a>
+
+                    {{ if .topic.IsTopic }}
+                        <a href="/format/topic" class="topic__thumbnail-format topic__thumbnail-format--theme-blue" title='Все материалы в формате "Топик"'><i class="icon-paper-plane"></i></a>
+                    {{ else if .topic.IsNews }}
+                        <a href="/format/news" class="topic__thumbnail-format topic__thumbnail-format--theme-asphalt" title='Все материалы в формате "Новость"'><i class="icon-newspaper"></i></a>
+                    {{ else if .topic.IsVideo }}
+                        <a href="/format/video" class="topic__thumbnail-format topic__thumbnail-format--theme-red" title='Все материалы в формате "Видео"'><i class="icon-video-1"></i></a>
+                    {{ else if .topic.IsQuestion }}
+                        <a href="/format/question" class="topic__thumbnail-format topic__thumbnail-format--theme-green" title='Все материалы в формате "Вопрос"'><i class="icon-help"></i></a>
+                    {{ else if .topic.IsPodcast }}
+                        <a href="/format/podcast" class="topic__thumbnail-format topic__thumbnail-format--theme-silver" title='Все материалы в формате "Подкаст"'><i class="icon-megaphone-1"></i></a>
+                    {{ else if .topic.IsProject }}
+                        <a href="/format/project" class="topic__thumbnail-format topic__thumbnail-format--theme-turquoise" title='Все материалы в формате "Проект"'><i class="icon-code-1"></i></a>
+                    {{ end }}
+
+                </div>
+                {{ else }}
+                <div class="topic__thumbnail topic__thumbnail--empty">
+                    <a href="{{.topic.DestinationURL}}" class="topic__thumbnail-link" target="_blank" rel="nofollow">
+
+                        {{ if .topic.IsTopic }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-blue"><i class="icon-paper-plane"></i></div>
+                        {{ else if .topic.IsNews }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-asphalt"><i class="icon-newspaper"></i></div>
+                        {{ else if .topic.IsVideo }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-red"><i class="icon-video-1"></i></div>
+                        {{ else if .topic.IsQuestion }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-green"><i class="icon-help"></i></div>
+                        {{ else if .topic.IsPodcast }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-silver"><i class="icon-megaphone-1"></i></div>
+                        {{ else if .topic.IsProject }}
+                        <div class="topic__thumbnail-img-empty topic__thumbnail-img-empty--theme-turquoise"><i class="icon-code-1"></i></div>
+                        {{ end }}
+
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+
+            <div class="topic__flex-container-item topic__flex-container-item--size-8">
+                <h3 class="topic__title">
+                    <a href="{{.topic.DestinationURL}}" class="topic__title-link" target="_blank" rel="nofollow">{{ if .topic.IsFeatured }}<i class="emoji emoji--i-fire"></i> {{ end }}{{.topic.Name}}</a>
+                    <a href="/topics?q={{ .topic.DisplayDomain }}" class="topic__title-domain" title="Все топики с {{ .topic.DisplayDomain }}">({{ .topic.DisplayDomain }})</a>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="topic__meta">
+        <div class="topic__meta-row">
+            <div class="topic__meta-voting">
+                {{ if .current_user.Anon }}
+
+                <div class="topic__meta-voting-vote topic__meta-voting-vote--up topic__meta-voting-vote--notvoted">
+                    <a href="/signup"><i class="icon-up-bold"></i></a>
+                </div>
+
+                <div class="topic__meta-voting-vote topic__meta-voting-vote--down topic__meta-voting-vote--notvoted">
+                    <a href="/signup"><i class="icon-down-bold"></i></a>
+                </div>
+
+                <div class="topic__meta-voting-info">
+                    <span class="topic__meta-voting-info-points">{{.topic.Points}}</span>
+                    <p class="topic__meta-voting-info-title">{{.topic.DeclensionPoints}}</p>
+                </div>
+
+                {{ else }}
+
+                <div class="topic__meta-voting-vote topic__meta-voting-vote--up {{if not .current_user.CanUpvote }}topic__meta-voting-vote--disabled{{ end }} topic__meta-voting-vote--notvoted">
+                    <a href="/topics/{{.topic.Id}}/upvote" method="post" class="js-vote" data-vote="upvote" data-vote-id="topic-id-{{ .topic.Id }}-{{.current_user.Id}}"><i class="icon-up-bold"></i></a>
+                </div>
+
+                <div class="topic__meta-voting-vote topic__meta-voting-vote--down {{if not .current_user.CanDownvote }}topic__meta-voting-vote--disabled{{ end }} topic__meta-voting-vote--notvoted">
+                    <a href="/topics/{{.topic.Id}}/downvote" method="post" class="js-vote" data-vote="downvote" data-vote-id="topic-id-{{ .topic.Id }}-{{.current_user.Id}}"><i class="icon-down-bold"></i></a>
+                </div>
+
+                <div class="topic__meta-voting-info">
+                    <span class="topic__meta-voting-info-points">{{.topic.Points}}</span>
+                    <p class="topic__meta-voting-info-title">{{.topic.DeclensionPoints}}</p>
+                </div>
+
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="topic__meta-row">
+            <div class="topic__meta-comments">
+                <div class="topic__meta-comments-icon">
+                    <a href="/topics/{{.topic.Id}}">
+                        <i class="icon-comment-1"></i>
+                    </a>
+                </div>
+
+                <div class="topic__meta-comments-info">
+                <span class="topic__meta-comments-info-points">
+                    {{.topic.DisplayCommentCount}}
+                </span>
+                    <p class="topic__meta-comments-info-title">
+                        {{.topic.DeclensionComments}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

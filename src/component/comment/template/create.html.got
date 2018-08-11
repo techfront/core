@@ -1,0 +1,6 @@
+{{ define "content" }}
+	<div>
+		<h1>Create Comment</h1>
+		{{ template "components/comments/views/form.html.got" . }}
+	</div>
+{{ end }}

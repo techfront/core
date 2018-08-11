@@ -1,0 +1,54 @@
+{{ define "content" }}
+<div class="topic">
+    <div class="topic__bar">
+        <ul class="topic__bar-list">
+            <li class="topic__bar-list-item">
+                <a href="/admin/topics" title="" class="topic__bar-list-link">Все</a>
+            </li>
+            <li class="topic__bar-list-item">
+                <a href="?status=0" title="" class="topic__bar-list-link">Черновики</a>
+            </li>
+            <li class="topic__bar-list-item">
+                <a href="?status=13" title="" class="topic__bar-list-link">Отклоненные</a>
+            </li>
+            <li class="topic__bar-list-item">
+                <a href="?status=14" title="" class="topic__bar-list-link">В ожидании</a>
+            </li>
+            <li class="topic__bar-list-item">
+                <a href="?status=100" title="" class="topic__bar-list-link">Опубликованные</a>
+            </li>
+            <li class="topic__bar-list-item">
+                <a href="?status=101" title="" class="topic__bar-list-link">Прикрепленные</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="topic__list topic__list--mini">
+        {{ if eq .topics_count 0 }}
+            <p class="topic__list-not-exist">
+                К сожалению, по данному запросу ничего не найдено.
+            </p>
+        {{ end }}
+
+        {{ $0 := . }}
+        {{ range $i, $m := .topics }}
+        {{ set $0 "i" $i }}
+        {{ set $0 "topic" $m }}
+
+        {{ template "row_mini.html.got" $0 }}
+
+        {{ end }}
+
+        </div>
+
+        <div class="topic__pagination">
+            {{ if gt .prev_page -1 }}
+                <a href="{{ .prev_page_link }}" class="topic__pagination-prev">&#8592; Вернуться назад #{{ .prev_page }}</a>
+            {{ end }} 
+
+            {{ if eq (len .topics) 22 }}
+                <a href="{{ .next_page_link }}" class="topic__pagination-next">Просмотреть дальше #{{ .next_page }} &#8594;</a>
+            {{ end }}
+        </div>
+ </div>
+ {{ end }}

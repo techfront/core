@@ -1,0 +1,24 @@
+{
+  "name": "techfront",
+  "version": "1.0.0",
+  "authors": [
+    "Alexander Shelepenok"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor"
+  ],
+  "dependencies": {
+    "fetch": "v0.11.1",
+    "es6-promise": "^4.1.1",
+    "ts-notifier": "^1.0.7",
+    "get-form-data": "https://github.com/insin/get-form-data.git#1.2.5"
+  },
+  "overrides": {
+    "get-form-data": {
+      "main": "umd/get-form-data.js"
+    }
+  }
+}

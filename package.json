@@ -1,0 +1,47 @@
+{
+  "name": "techfront",
+  "version": "1.0.0",
+  "description": "WebSite",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wpioneer/hackerstakc-core.git"
+  },
+  "keywords": [
+    "postcss",
+    "gulp",
+    "html"
+  ],
+  "author": "Alexander Shelepenok",
+  "devDependencies": {
+    "typescript": "^2.0.3",
+    "typings": "^2.0.0",
+    "tslint": "^4.0.2",
+    "gulp-tslint": "^7.0.1",
+    "gulp-typescript": "^3.1.3",
+    "bower": "^1.7.9",
+    "autoprefixer": "^6.3.6",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-sass": "^2.3.2",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-stylefmt": "1.0.0",
+    "gulp-watch": "^4.3.6",
+    "gulp-postcss": "^6.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-filter": "^4.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-favicons": "^2.2.6",
+    "gulp-main-bower-files": "^1.5.2",
+    "postcss-inline-comment": "^2.0.0",
+    "postcss-reporter": "^1.3.0",
+    "stylelint": "^6.6.0",
+    "stylelint-scss": "^1.1.1",
+    "stylelint-selector-no-utility": "^1.1.0",
+    "lost": "^7.0.1",
+    "postcss-pxtorem": "^4.0.0"
+  }
+}

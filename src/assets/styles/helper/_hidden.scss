@@ -1,0 +1,37 @@
+/** 
+* Хелпер определяет видимость элемента..
+*/
+
+@import "../variables";
+@import "../breakpoints";
+
+.h-hidden {
+	display: inherit;
+	&--xs {
+		display: none;
+	}
+}
+
+@include breakpoint-max-lg {
+	.h-hidden {
+		&--lg {
+			display: none;
+		}
+	}
+}
+
+@include breakpoint-max-md {
+	.h-hidden {
+		&--md {
+			display: none;
+		}
+	}
+}
+
+@include breakpoint-max-sm {
+	.h-hidden {
+		&--sm {
+			display: none;
+		}
+	}
+}

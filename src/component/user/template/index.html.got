@@ -1,0 +1,132 @@
+{{ define "content" }}
+	<div class="user">
+		{{ if .page_title }}
+		    <div class="user__index-heading">
+		        <h4 class="user__index-title">{{ if .page_icon }}<i class="{{ .page_icon }}"></i> {{ end }} {{ .page_title }} <span class="user__index-title-gray">({{.count}} участников)</span></h4>
+		    </div>
+		{{ end }}
+		<div class="user__form">
+			<form class="form" action="/users" method="get">
+			    <div class="field field--group">
+			               <input class="input input--theme-fullwidth input--theme-group" name="q" placeholder="Поиск по никнейму..." type="text">
+			               <input class="button button--theme-group" value="Найти!" type="submit">
+		               </div>
+		           </form>
+	           </div>
+
+	           <div class="user__table">
+			<table class="user__table-table">
+			<thead class="user__table-thead">
+		            <tr>
+		                <th class="user__table-cell user__table-cell--first">
+		               	{{ if eq .current_sort "name" }}
+		                	<div class="user__table-cell-inner user__table-cell-inner--active">
+		                		{{ if eq .current_order "desc" }}
+		                		<a class="user__table-thead-link" href="/users/?sort=name&order=asc">Имя</a>
+		                		<span class="user__table-thead-icon">&#8595;</span>
+		                		{{ else }}
+		                		<a class="user__table-thead-link" href="/users/?sort=name&order=desc">Имя</a>
+		                		<span class="user__table-thead-icon">&#8593;</span>
+		                		{{ end }}
+		                	</div>
+		                	{{ else }}
+		                	<div class="user__table-cell-inner">
+		                		<a class="user__table-thead-link" href="/users/?sort=name&order=desc">Имя</a>
+		                	</div>
+		                	{{ end }}
+		                </th>
+		                <th class="user__table-cell">
+		                	{{ if eq .current_sort "count_topic" }}
+		                	<div class="user__table-cell-inner user__table-cell-inner--active">
+		                		{{ if eq .current_order "desc" }}
+		                		<a class="user__table-thead-link" href="/users/?sort=count_topic&order=asc">Топики</a>
+		                		<span class="user__table-thead-icon">&#8595;</span>
+		                		{{ else }}
+		                		<a class="user__table-thead-link" href="/users/?sort=count_topic&order=desc">Топики</a>
+		                		<span class="user__table-thead-icon">&#8593;</span>
+		                		{{ end }}
+		                	</div>
+		                	{{ else }}
+		                	<div class="user__table-cell-inner">
+		                		<a class="user__table-thead-link" href="/users/?sort=count_topic&order=desc">Топики</a>
+		                	</div>
+		                	{{ end }}
+		                </th>
+		                <th class="user__table-cell">
+		               	{{ if eq .current_sort "count_comment" }}
+		                	<div class="user__table-cell-inner user__table-cell-inner--active">
+		                		{{ if eq .current_order "desc" }}
+		                		<a class="user__table-thead-link" href="/users/?sort=count_comment&order=asc">Комментарии</a>
+		                		<span class="user__table-thead-icon">&#8595;</span>
+		                		{{ else }}
+		                		<a class="user__table-thead-link" href="/users/?sort=count_comment&order=desc">Комментарии</a>
+		                		<span class="user__table-thead-icon">&#8593;</span>
+		                		{{ end }}
+		                	</div>
+		                	{{ else }}
+		                	<div class="user__table-cell-inner">
+		                		<a class="user__table-thead-link" href="/users/?sort=count_comment&order=desc">Комментарии</a>
+		                	</div>
+		                	{{ end }}
+		                </th>
+		                <th class="user__table-cell">
+		                	{{ if eq .current_sort "power" }}
+		                	<div class="user__table-cell-inner user__table-cell-inner--active">
+		                		{{ if eq .current_order "desc" }}
+		                		<a class="user__table-thead-link" href="/users/?sort=power&order=asc">Сила</a>
+		                		<span class="user__table-thead-icon">&#8595;</span>
+		                		{{ else }}
+		                		<a class="user__table-thead-link" href="/users/?sort=power&order=desc">Сила</a>
+		                		<span class="user__table-thead-icon">&#8593;</span>
+		                		{{ end }}
+		                	</div>
+		                	{{ else }}
+		                	<div class="user__table-cell-inner">
+		                		<a class="user__table-thead-link" href="/users/?sort=power&order=desc">Сила</a>
+		                	</div>
+		                	{{ end }}
+		                </th>
+		                <th class="user__table-cell user__table-cell--last">
+		                	{{ if eq .current_sort "score" }}
+		                	<div class="user__table-cell-inner user__table-cell-inner--active">
+		                		{{ if eq .current_order "desc" }}
+		                		<a class="user__table-thead-link" href="/users/?sort=score&order=asc">Карма</a>
+		                		<span class="user__table-thead-icon">&#8595;</span>
+		                		{{ else }}
+		                		<a class="user__table-thead-link" href="/users/?sort=score&order=desc">Карма</a>
+		                		<span class="user__table-thead-icon">&#8593;</span>
+		                		{{ end }}
+		                	</div>
+		                	{{ else }}
+		                	<div class="user__table-cell-inner">
+		                		<a class="user__table-thead-link" href="/users/?sort=score&order=desc">Карма</a>
+
+		                	</div>
+		                	{{ end }}
+		                </th>
+		            </tr>
+		           </thead>
+		           <tbody>
+		             {{ $0 := . }}
+			    {{ range $i,$m := .users }}
+			      {{ set $0 "i" $i }}
+			      {{ set $0 "user" $m }}
+			      {{ template "row.html.got" $0 }}
+			    {{ end }}
+		           </tbody>
+			</table>
+		</div>
+
+		<p class="user__admin-count">*Администраторы: {{ .adminCount }}</p>
+
+		<div class="user__pagination">
+	            {{ if gt .prev_page -1 }}
+	                <a href="{{ .prev_page_link }}" class="user__pagination-prev">&#8592; Вернуться назад #{{ .prev_page }}</a>
+	            {{ end }} 
+
+	            {{ if eq (len .users) 100 }}
+	                <a href="{{ .next_page_link }}" class="user__pagination-next">Просмотреть дальше #{{ .next_page }} &#8594;</a>
+	            {{ end }}
+	           </div>
+	</div>
+{{ end }}

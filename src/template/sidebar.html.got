@@ -1,0 +1,16 @@
+<aside class="sidebar">
+    <div class="sidebar__inner">
+
+        <section class="sidebar__item">
+            {{ template "widget_activity.html.got" . }}
+        </section>
+
+        <section class="sidebar__item">
+            {{ template "widget_sidebar_social.html.got" . }}
+        </section>
+
+        <section class="sidebar__item">
+            {{ template "widget_sidebar_ads.html.got" . }}
+        </section>
+    </div>
+</aside>

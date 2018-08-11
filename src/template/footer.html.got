@@ -1,0 +1,32 @@
+<div class="footer__flex-container">
+    <div class="footer__flex-container-item footer__flex-container-item--6">
+        <div class="footer__menu">
+            <ul class="footer__menu-list">
+                {{if .meta_rss }}<li class="footer__menu-item"><a class="footer__menu-item-link" href="{{ .meta_rss }}" target="_blank"><i class="icon-rss"></i> RSS</a></li> {{ end }}
+                <li class="footer__menu-item"><a class="footer__menu-item-link" href="https://twitter.com/techfrontorg" target="_blank">Твиттер</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-item-link" href="https://vk.com/techfront" target="_blank">ВК</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-item-link" href="https://github.com//techfront" target="_blank">Гитхаб</a></li>
+                <li class="footer__menu-item"><a class="footer__menu-item-link" href="/about">Немного о проекте</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__text">
+            Код этого сайта работает на серверах <a href="https://www.linode.com/?r=a322cb7a214f3cc36b4ceb7d4d1d753178d74d7e" target="_blank" rel="nofollow">Linode</a></br>
+            <p class="footer__copy">Techfront 2017. Все права сохранены.</p>
+        </div>
+    </div>
+    <div class="footer__flex-container-item footer__flex-container-item--3 h-text h-text--sm-center">
+        <a href="/ways-to-give" class="button footer__donat-button h-margin h-margin--xs-top-30 h-margin--sm-bottom-20" title="Способы поддержать проект"><i class="icon-yandex-rect"></i>Как поддержать TF?</a>
+    </div>
+    <div class="footer__flex-container-item footer__flex-container-item--3">
+        <a href="/" class="footer__logo">
+            <div class="footer__logo-img">
+            <svg aria-label="footer-logo-letters" height="24" id="svg-footer-logo-letters" role="img" version="1.1" viewBox="0 0 38 24" width="41" style="top: 0px;position: relative;"><g><path shape-rendering="optimizeSpeed" fill="rgba(255,255,255,0.3)" d="M 0.43359375 0.7890625 L 0.43359375 5.0078125 L 7.015625 5.0078125 L 7.015625 23.300781 L 11.841797 23.300781 L 11.841797 5.0078125 L 18.388672 5.0078125 L 18.388672 0.7890625 L 0.43359375 0.7890625 z M 21.460938 0.7890625 L 21.460938 23.300781 L 26.253906 23.300781 L 26.253906 13.984375 L 37.154297 13.984375 L 37.154297 9.765625 L 26.253906 9.765625 L 26.253906 5.0078125 L 37.390625 5.0078125 L 37.390625 0.7890625 L 21.460938 0.7890625 z"></path></g></svg>
+            </div>
+        </a>
+        <div class="footer__text footer__text--center footer__text--made">
+            Створана ў Беларусі з <i class="icon-heart"></i>
+        </div>
+    </div>
+</div>
+

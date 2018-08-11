@@ -1,0 +1,24 @@
+﻿/**
+* Инициализация SASS.
+*/
+@charset "UTF-8";
+
+@import "function/init";
+@import "variables";
+@import "breakpoints";
+@import "default";
+@import "icons";
+@import "helper/init";
+@import "button";
+@import "header";
+@import "dropdown";
+@import "menu";
+@import "layout";
+@import "emoji";
+@import "widget/init";
+@import "animation";
+@import 'widget';
+@import "sidebar";
+@import "footer";
+@import "form";
+@import "modal";

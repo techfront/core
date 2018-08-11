@@ -1,0 +1,35 @@
+<tr class="user__table-row">
+	<td class="user__table-cell user__table-cell--first">
+		<div class="user__table-cell-inner">
+			<div class="user__table-flex">
+				<div class="user__table-flex-item">
+					<img class="user__table-avatar" src={{ .user.DisplayAvatar 36}} srcset="{{ .user.DisplayAvatar  72}} 2x" height="36" width="36">
+				</div>
+				<div class="user__table-flex-item">
+					<p class="user__table-name"><a class="user__table-name-link" href="/users/{{ .user.Id }}">{{.user.Name}}</a></p>
+					<p class="user__table-date">{{ .user.VerbСonjugation "Присоеденился" }} {{timeago .user.CreatedAt}}</p>
+				</div>
+			</div>
+		</div>
+	</td>
+	<td class="user__table-cell">
+		<div class="user__table-cell-inner">
+		{{ .user.TopicCount }}
+		</div>
+	</td>
+	<td class="user__table-cell">
+		<div class="user__table-cell-inner">
+		{{ .user.CommentCount }}
+		</div>
+	</td>
+	<td class="user__table-cell">
+		<div class="user__table-cell-inner">
+		<p class="user__table-power {{ if gt .user.Power 1.0 }}user__table-power--positive{{ else if lt .user.Power 0.0 }}user__table-power--negative{{ end }}">{{ displayfloat .user.Power }}</p>
+		</div>
+	</td>
+	<td class="user__table-cell user__table-cell--last">
+		<div class="user__table-cell-inner">
+		<p class="user__table-score {{ if gt .user.Score 1.0 }}user__table-score--positive{{ else if lt .user.Score 0.0 }}user__table-score--negative{{ end }}">{{ displayfloat .user.Score }}</p>
+		</div>
+	</td>
+</tr>

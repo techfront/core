@@ -1,0 +1,144 @@
+.button {
+  font-size: 13px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Verdana", "DejaVu Sans", "Bitstream Vera Sans", sans-serif;
+  background: $primary-color;
+  color: #FFF;
+  border: 0;
+  border-radius: 3px;
+  display: inline-flex;
+  vertical-align: middle;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 8px 24px;
+  line-height: 1.475;
+
+  &:hover,
+  &:focus {
+    color: #FFF;
+    background-color:  darken($primary-color, 10%);
+  }
+
+  &--disabled {
+  }
+
+  &--theme {
+
+    &-pike {
+      background-color: $secondary-color;
+
+      &:hover,
+      &:focus {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+
+    &-yellow {
+      background-color: $yellow-color;
+      color: $base-color;
+
+      &:hover,
+      &:focus {
+        background-color: darken($yellow-color, 10%);
+        color: $base-color;
+      }   
+    }
+
+    &-shy-dashed {
+        background: #fdf2dc;
+        border: 1px dashed lighten($secondary-color, 30%);
+        color: $secondary-color;
+
+        &:hover,
+        &:focus {
+          background: darken(#fdf2dc, 3%);
+          color: $secondary-color;
+        }
+    }
+
+    &-shy {
+      background: #fdf2dc;
+      color: $secondary-color;
+
+      &:hover,
+      &:focus {
+        background: darken(#fdf2dc, 3%);
+        color: $secondary-color;
+      }
+    }
+
+    &-icon {
+      font-size: 14px;
+      padding: 0;
+      height: 33px;
+      width: 33px;
+      text-align: center;
+      border-radius: 50%;
+      color: #FFF;
+
+      &:hover,
+      &:focus {
+        color: #FFF;
+        box-shadow: none;
+        background-color:  darken($primary-color, 10%);
+      }
+    }
+
+    &-link {
+      font-size: 11px;
+      color: $gray-text-color;
+      height: auto;
+      background: transparent;
+      font-weight: 400;
+      text-decoration: underline;
+      padding: 0;
+      border: 0;
+      text-shadow: none;
+      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        color: $secondary-color;
+        background: transparent;
+        text-decoration: none;
+      }
+    }
+
+    &-primary-darkness {
+        background: $blue-dark-color;
+
+        &:hover,
+        &:focus {
+          background: darken($blue-dark-color, 5%);
+        }
+    }
+
+    &-group {
+      padding: 10px 24px;
+    }
+  }
+}
+
+@include breakpoint-lg {
+  .button {
+    &--theme {
+      &-icon {
+        width: 33px;
+        height: 33px;
+        font-size: 13px;
+        padding: 0;
+      }
+
+      &-shy {
+      }
+
+      &-pike {
+      }
+    }
+  }
+}

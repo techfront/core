@@ -1,0 +1,7 @@
+/**
+* Функция rem-calc преобразует px в rem. 
+*/
+@mixin rem-calc($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}

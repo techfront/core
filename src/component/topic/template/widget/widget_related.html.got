@@ -1,0 +1,24 @@
+<div class="widget widget--type-related h-margin--xs-top-20">
+    {{ if .related_topics }}
+    <div class="widget__header">
+        <h4 class="widget__title">Ещё интересные топики:</h4>
+    </div>
+
+    <div class="widget__content">
+        <div class="related-widget">
+            <div class="topic">
+                <div class="topic__list topic__list--mini">
+                    {{ $0 := . }}
+                    {{ range $i, $m := .related_topics }}
+                    {{ set $0 "i" $i }}
+                    {{ set $0 "topic" $m }}
+
+                    {{ template "row_mini.html.got" $0 }}
+
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>

@@ -1,0 +1,33 @@
+<!-- Block Wrapper -->
+<div class="widget widget--type-activity">
+    <!-- Block Header -->
+    <div class="widget__header">
+        <h4 class="widget__title"><i class="emoji emoji--i-comment"></i> Обсуждают сейчас</h4>
+    </div>
+
+    <!-- Block Content -->
+    <div class="widget__panes">
+        <div class="widget__panes-item widget__panes-item--active">
+            <!-- Activity Block Body  -->
+            <div class="activity-widget">
+                <ul class="js-activity__more-items activity-widget__list activity-widget__list--hidden">
+                    {{ $0 := . }}
+                    {{ range .comment_list_recent }}
+                    {{ set $0 "comment" . }}
+                    {{ template "widget_activity_row.html.got" $0 }}
+                    {{ end }}
+                </ul>
+                <div class="activity-widget__more-items">
+                    <a href="#" class="js-show activity-widget__more-items-link" data-show=".js-activity__more-items">
+                        <i class="icon-down-open-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block Footer -->
+    <div class="widget__footer">
+        <p class="widget__footer-text"></p>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{{ define "content" }}
+	<div class="topic">
+		<div class="topic__update">
+			<h4 class="topic__update-title">Обновление топика: "{{ .topic.Name }}"</h4>
+			{{ template "form.html.got" . }}
+		</div>
+	</div>
+{{ end }}

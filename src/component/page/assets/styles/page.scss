@@ -1,0 +1,67 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/breakpoints";
+
+.page {
+  a {
+    text-decoration: underline;
+  }
+  &__header {
+    margin-bottom: 26px;
+  }
+  &__title {
+    font-size: 24px;
+    font-family: Georgia, "DejaVu serif", serif;
+    margin-bottom: 26px;
+    margin-top: 26px;
+  }
+  &__body {
+    margin-bottom: 26px;
+  }
+  &__footer {
+    margin-bottom: 26px;
+  }
+  &__social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    &-item {
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      &-thumbnail {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 48px;
+        color: #FFF;
+        border-radius: 50%;
+        margin: 0 auto;
+        background: $primary-color;
+        text-align: center;
+        i {
+            position: relative;
+            top: -2px;
+        }
+        &--vkontakte {
+          background: #45668e;
+          i {
+            left: -2px;
+          }
+        }
+       &--telegram-channel {
+          background: $primary-color;
+       }
+       &--telegram-bot {
+           background: $asphalt-color;
+       }
+       &--twitter {
+          background: #55acee;
+       }
+      }
+      &-text {
+        text-align: center;
+      }
+    }
+  }
+}

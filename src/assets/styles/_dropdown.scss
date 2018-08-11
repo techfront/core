@@ -1,0 +1,91 @@
+.dropdown {
+	position: relative;
+	&__toggle {
+		&:after {
+			display: inline-block;
+			width: 0;
+			height: 0;
+			margin-left: .3em;
+			vertical-align: middle;
+			content: "";
+			border-top: .3em solid;
+			border-right: .3em solid transparent;
+			border-left: .3em solid transparent;
+		}
+	}
+	&__menu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1000;
+		display: none;
+		min-width: 130px;
+		padding: 8px 0;
+		margin: 8px 0 0;
+		font-size: 13px;
+		color: $base-color;
+		text-align: left;
+		list-style: none;
+		background-color: #FFF;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		border: 1px solid rgba(0,0,0,.15);
+		border-radius: 3px;
+		&--show {
+			display: block;
+		}
+		&:after {
+			width: 0; 
+			height: 0;
+			content: "";
+			position: absolute;
+			top: -7px;
+			left: 3px;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-bottom: 7px solid rgba(0,0,0,.2);
+		}
+		&:before {
+			width: 0; 
+			height: 0;
+			content: "";
+			position: absolute;
+			top: -6px;
+			left: 3px;
+			z-index: 10;
+			border-left: 7px solid transparent;
+			border-right: 7px solid transparent;
+			border-bottom: 7px solid #FFF;
+		}
+	}
+	&__item {
+		display: block;
+		padding: 4px 10px 5px 10px;
+		font-weight: 400;
+		color: $base-color;
+		text-align: inherit;
+		white-space: nowrap;
+		background: 0 0;
+		border: 0;
+		&:hover,
+		&:focus {
+			background-color: $primary-color;
+			color: #FFF;
+			& a {
+				color: #FFF;
+			}
+			& i {
+				color: #FFF;
+			}
+		}
+		&-link {
+			display: inline-block;
+			width: 100%;
+			color: $base-color;
+			& i {
+				font-size: 14px;
+				color: $secondary-color;
+			}
+		}
+	}
+}

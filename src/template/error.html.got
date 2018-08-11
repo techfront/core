@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {{ template "meta.html.got" . }}
+</head>
+
+<body>
+
+      <div class="error">
+            <div class="error__inner">
+                  <div class="error__info">
+                        <h4 class="error__title">{{.error_title}}</h4>
+                        <p>{{.error_message}}</p>
+                        {{ if .error_file }}
+                        <p class="error__error">Error: {{.error_error }}</p>
+                        <p class="error__file">File: {{.error_file}}</p>
+                        {{ end }}
+
+                        <div class="error__buttons">
+                              {{ if .current_user.Anon }}
+                              <a href="/users/login" class="button">Войти</a>
+                              {{ end }}
+                              <a class="button" method="back">Вернуться назад</a>
+                        </div>
+                  </div>
+            </div>
+
+            <img class="error__thumb" src="/images/icons/64/packman.png" srcset="/images/icons/64/packman.png 2x" width="64" height="64" / >
+
+      </div>
+
+      {{ template "includes.html.got" . }}
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73379983-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+
+</body>
+
+</html>

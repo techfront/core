@@ -1,0 +1,6 @@
+{{ script "dom.min" }}
+{{ script "fetch.min" }}
+{{ script "get-form-data.min" }}
+{{ script "ts-notifier.min" }}
+
+{{ script "app" }}

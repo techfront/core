@@ -1,0 +1,15 @@
+{{ define "content" }}
+<div class="page">
+ <div class="page__item">
+     <div class="page__header">
+         <h2 class="page__title">Спасибо за поддержку, перевод получен!</h2>
+     </div>
+     <div class="page__body">
+        <p>Редирект на главную произойдет примерно через 2 секунды.
+     </div>
+     <div class="page__footer">
+         <div class="h-divider"></div>
+     </div>
+ </div>
+</div>
+{{ end }}

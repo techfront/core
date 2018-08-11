@@ -1,0 +1,29 @@
+{{ define "content" }}
+<div id="comment" class="comment">
+
+    {{ if .page_title }}
+        <div class="comment__index-heading">
+            <h4 class="comment__index-title">{{ if .page_icon }}<i class="{{ .page_icon }}"></i> {{ end }}{{ .page_title }}</h4>
+        </div>
+    {{ end }}
+
+    <ul class="comment__list">
+      {{ $0 := . }}
+      {{ range $i,$m := .comments }}
+         {{ set $0 "i" $i }}
+         {{ set $0 "comment" $m }}
+         {{ template "comment.html.got" $0 }}
+      {{ end }}
+    </ul>
+
+    <div class="comment__pagination">
+    {{ if gt .prev_page -1 }}
+        <a href="{{ .prev_page_link }}" class="comment__pagination-prev">&#8592; Вернуться назад #{{ .prev_page }}</a>
+    {{ end }} 
+
+    {{ if eq (len .comments) 50 }}
+        <a href="{{ .next_page_link }}" class="comment__pagination-next">Просмотреть дальше #{{ .next_page }} &#8594;</a>
+    {{ end }}
+    </div>
+</div>
+{{ end }}

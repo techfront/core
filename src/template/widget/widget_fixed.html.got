@@ -1,0 +1,31 @@
+<div class="widget widget--type-fixed">
+    <div class="widget__content">
+        <div class="fixed-widget">
+            <div class="js-widget--fixed fixed-widget__inner">
+
+                <div class="fixed-widget__item fixed-widget__item--toolbar">
+                    <div class="toolbar">
+                        <div class="toolbar__control">
+                            <a href="#" class="js-control-prev toolbar__control-prev"><i class="icon-angle-up"></i></a>
+                            <a href="#" class="js-control-next toolbar__control-next"><i class="icon-angle-down"></i></a>
+                        </div>
+                        <div class="toolbar__scroll">
+                            <a href="#" class="js-scroll-up toolbar__scroll-up" style="opacity: 0.3; pointer-events: none;"><i class="icon-angle-double-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                {{ if .topics }}
+                <div class="js-widget--fixed-about fixed-widget__item fixed-widget__item--about" style="display: none;">
+                    <a data-close=".js-widget--fixed-about" class="js-close fixed-widget__close">&#215;</a>
+                    <a href="/about" class="fixed-widget__link">
+                        <img class="fixed-widget__img" src="/images/icons/64/www.png" srcset="/images/icons/@2x/www.png 2x" width="64" height="64">
+                        <p class="fixed-widget__text">Что это за</br> сайт? о_О</p>
+                    </a>
+                </div>
+                {{ end }}
+
+            </div>
+        </div>
+    </div>
+</div>

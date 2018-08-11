@@ -1,0 +1,20 @@
+<!-- Block Wrapper -->
+<div class="js-widget--subscribe block widget--type-subscribe" style="display: none">
+    <!-- Block Content -->
+    <div class="widget__content">
+        <!-- Subscriber Block Body -->
+        <div class="subscribe-widget">
+            <div class="subscribe-widget__inner">
+                <a class="js-close subscribe-widget__close" data-close=".js-widget--subscribe">&#215;</a>
+                <div class="subscribe-widget__heading">
+                    <div class="subscribe-widget__title">Вечером можно прочитать нашу идеальную рассылку.</div>
+                    <div class="subscribe-widget__descr">Подписывайся, что бы получать<br> новые и интересные дайджесты.</div>
+                </div>
+                <form class="js-widget--subscribe-form subscribe-widget__form">
+                    <input type="text" name="email" class="subscribe-widget__input input" placeholder="Email"/>
+                    <input type="submit" class="subscribe-widget__button button" value="Отправить!"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

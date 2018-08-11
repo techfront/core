@@ -1,0 +1,50 @@
+/** 
+* Хелпер переопределяет внешний отступ.
+*/
+
+@import "../variables";
+@import "../breakpoints";
+
+.h-margin {
+	&--xs {
+		&-top {
+			&-20 {
+				margin-top: 20px;
+			}
+			&-30 {
+				margin-top: 30px;
+			}
+		}
+		&-bottom {
+			&-20 {
+				margin-bottom: 20px;
+			}
+			&-30 {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@include breakpoint-max-sm {
+	.h-margin {
+		&--sm {
+			&-top {
+				&-20 {
+					margin-top: 20px;
+				}
+				&-30 {
+					margin-top: 30px;
+				}
+			}
+			&-bottom {
+				&-20 {
+					margin-bottom: 20px;
+				}
+				&-30 {
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}

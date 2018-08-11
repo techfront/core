@@ -1,0 +1,88 @@
+{{ if .comment.CheckExist }}
+    <li id="comment-id-{{.comment.Id}}" class="comment__item comment__item--level-{{ .comment.Level }} comment__item--minus-{{ .comment.DisplayNegativePoints }}">
+        <div class="comment__item-inner">
+            <a href="/users/{{.comment.UserId}}" title="{{ .comment.UserData.Name }}" class="comment__user"><img src={{ .comment.DisplayAvatar 35}} srcset="{{ .comment.DisplayAvatar 70}} 2x" class="comment__user-img" width="35" height="35" /></a>
+            <div class="comment__body">
+                {{ markup .comment.Text }}
+            </div>
+            <div class="comment__meta">
+                <div class="comment__meta-row">
+                    {{ if not .topic }}
+                    <p class="comment__meta-descr">
+                        <a href="/users/{{ .comment.UserId }}" title="{{ .comment.UserData.Name }}" class="comment__meta-user">{{ .comment.UserData.Name }}</a> <span class="comment__meta-action">{{ .comment.VerbСonjugation "оставил" }} комментарий в</span> <a href="/topics/{{.comment.TopicId}}/#comment-id-{{.comment.Id}}" class="comment__meta-topic">{{ .comment.TopicData.Name }}</a> <time class="comment__meta-date" datetime="{{ isotime .comment.CreatedAt }}">{{timeago .comment.CreatedAt}}</time>
+                    </p>
+                    {{ else }}
+                    {{ if eq .comment.UserId .topic.UserId}}
+                    <a href="/users/{{.comment.UserId}}" class="comment__meta-user comment__meta-user--author">{{ .comment.UserData.Name }}</a>
+                    {{ else }}
+                    <a href="/users/{{.comment.UserId}}" class="comment__meta-user">{{ .comment.UserData.Name }}</a>
+                    {{ end }}
+                    <div class="v-divider"></div>
+                    <time class="comment__meta-date" datetime="{{ isotime .comment.CreatedAt }}">{{timeago .comment.CreatedAt}}</time>
+                    <div class="v-divider"></div>
+                    <div class="comment__meta-voting">
+
+                        <div class="comment__meta-voting-vote {{if not .current_user.CanUpvote }}comment__meta-voting-vote--disabled{{ end }} comment__meta-voting-vote--notvoted">
+                            <a href="/comments/{{.comment.Id}}/upvote" method="post" class="js-vote" data-vote="upvote" data-vote-id="comment-id-{{ .comment.Id }}-{{ .current_user.Id }}"><i class="icon-thumbs-up"></i></a>
+                        </div>
+
+                        <di class="comment__meta-voting-points">{{ .comment.Points }}</di>
+
+                        <div class="comment__meta-voting-vote {{if not .current_user.CanDownvote }}comment__meta-voting-vote--disabled{{ end }} comment__meta-voting-vote--notvoted">
+                            <a href="/comments/{{.comment.Id}}/downvote" method="post" class="js-vote" data-vote="downvote" data-vote-id="comment-id-{{ .comment.Id }}-{{ .current_user.Id }}"><i class="icon-thumbs-down"></i></a>
+                        </div>
+
+                    </div>
+
+                    {{ end }}
+
+                    {{ if and (.topic) (.current_user.CanComment) }}
+
+                    {{ if (ne .comment.UserId .current_user.Id) }}
+                    <div class="v-divider"></div>
+                    <a href="#" class="js-show comment__reply-link" data-show="#comment-id-{{.comment.Id}} .js-reply-form">ответить</a>
+                    {{ end }}
+
+                    {{ if (.current_user.Admin) }}
+                    <div class="v-divider"></div>
+                    <!-- <a href="/comments/{{.comment.Id}}/flag" method="post" class="comment__flag-link">flag</a> -->
+                    <a href="/comments/{{.comment.Id}}/update" class="comment__edit-link"><i class="icon-pencil-1"></i>редактировать</a>
+                    <div class="v-divider"></div>
+                    <a href="/comments/{{.comment.Id}}/destroy" method="delete" class="comment__edit-link">удалить</a>
+                    <div class="v-divider"></div>
+                    <a href="/comments/{{.comment.Id}}/hide" method="post" class="comment__edit-link">скрыть</a>
+                    {{ end }}
+
+                    {{ end }}
+
+                    <div class="v-divider"></div>
+                    <a href="#comment-id-{{.comment.Id}}" class="comment__anchor-link"><i class="icon-hashtag"></i></a>
+                </div>
+            </div>
+
+            {{ if .topic }}
+                {{ if (ne .comment.UserId .current_user.Id)  }}
+                <div class="js-reply-form comment__reply-form comment__reply-form--hidden">
+                    {{ template "form_embed.html.got" . }}
+                </div>
+                {{ end }}
+            {{ end }}
+        </div>
+    </li>
+
+    {{ $0 := . }}
+    {{ range .comment.Children }}
+    {{ set $0 "comment" . }}
+    {{ template "comment.html.got" $0 }}
+    {{ end }}
+
+{{ else }}
+
+<li class="comment__item comment__item--empty comment__item--level-{{ .comment.Level }}">
+    <div class="comment__item-inner"> 
+        <img class="comment__item--empty__thumb" src="/images/icons/32/r2d2.png" srcset="/images/icons/64/r2d2.png 2x" width="32" height="32" />
+        <p class="comment__item--empty__info">Микробот был здесь и скрыл этот комментарий.</p>
+    </div>
+</li>
+
+{{ end }}

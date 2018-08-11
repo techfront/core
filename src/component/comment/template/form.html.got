@@ -1,0 +1,17 @@
+<div class="comment_form">
+    <form method="post" class="resource-update-form">
+
+        <p>Комментарий {{ .comment.Id }} от <a href="{{ .comment.UserId }}">{{ .comment.UserData.Name }}</a></p>
+
+        <div class="wide-fields">
+        {{ textarea "Text" "comment_text" .comment.Text }}
+        </div>
+
+        <div class="actions clear">
+            <input type="submit" class="button" value="Save">
+            <a class="button grey" method="back">отменить</a>
+        </div>
+
+        <input name="authenticity_token" type="hidden" value="{{ .authenticity_token }}">
+    </form>
+</div>

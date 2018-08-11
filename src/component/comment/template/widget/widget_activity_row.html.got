@@ -1,0 +1,18 @@
+{{ if and .comment.UserData.Name .comment.TopicData.Name }}
+    <li class="activity-widget__item">
+        <div class="activity-widget__item-container">
+            <div class="activity-widget__item-row">
+                <img src={{ .comment.DisplayAvatar 16 }} srcset="{{ .comment.DisplayAvatar 32 }} 2x" class="activity-widget__user-img" width="16" height="16" />
+            </div>
+        </div>
+        <div class="activity-widget__item-container">
+            <div class="activity-widget__item-row">
+                <a href="/users/{{.comment.UserId}}" title="{{ .comment.UserData.Name }}" class="activity-widget__user-link">{{ .comment.UserData.Name }}</a>
+                <span class="activity-widget__user-action">{{ .comment.VerbСonjugation "оставил" }} комментарий в</span>
+                <a class="activity-widget__topic" href="/topics/{{.comment.TopicId}}/#comment-id-{{.comment.Id}}">{{ .comment.TopicData.Name }}</a>
+                <time class="activity-widget__date" datetime="{{ isotime .comment.CreatedAt }}">{{timeago .comment.CreatedAt}}</time>
+                <a href="/topics/{{.comment.TopicId}}/#comment" class="activity-widget__count-comment"><i class="icon-comment-1"></i>{{ .comment.TopicData.CommentCount }}</a>
+            </div>
+        </div>
+    </li>
+{{ end }}

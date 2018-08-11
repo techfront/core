@@ -1,0 +1,165 @@
+input {
+  font-size: 13px;
+}
+
+input::-moz-focus-inner { 
+    border: 0;
+    padding: 0;
+    margin-top: -1px;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form {
+  &__buttons {
+    margin-top: 10px;
+  }
+}
+
+.field {
+  display: block;
+  margin-bottom: 10px;
+  &--group {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &__help {
+    display: block;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: inherit;
+    font-size: 13px;
+  }
+
+  label {
+    display: block;
+    font-weight: 400;
+    color: $base-color;
+    margin-bottom: 5px;
+  }
+}
+
+select,
+.select {
+  position: relative;
+  margin-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Verdana", "DejaVu Sans", "Bitstream Vera Sans", sans-serif;
+  font-size: 13px;
+  padding: 6px 25px 6px 6px;
+  line-height: 1.475;
+  outline: 0;
+  border: 1px solid #c5c5c5;
+  border-radius: 3px;
+  background: url(/images/select_arrow.svg) no-repeat right 6px center, linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-size: 16px, cover;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $base-color;
+  appearance: none;
+}
+
+.input {
+  display: inline-flex;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Verdana", "DejaVu Sans", "Bitstream Vera Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.475;
+  color: $base-color;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .07) inset;
+  border: 1px solid #c5c5c5;
+  border-radius: 3px;
+  align-items: center;
+  outline: 0;
+
+  &--transparent {
+    background: rgba(0, 0, 0, 0.07);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #777;
+    &::placeholder {
+      color: #777;
+    }
+    &::-moz-placeholder {
+      color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    border-color: $secondary-color;
+    box-shadow: 0 0px 1px $cloud-color;
+  }
+
+  &--type {
+    &-textarea {
+      margin: 5px 0;
+      padding: 8px 12px;
+      width: 100%;
+      min-height: 100px;
+      box-sizing: border-box;
+    }
+  }
+
+  &--theme {
+    &-fullwidth {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &-group {
+      padding: 10px 12px;
+      margin-right: 5px;
+      margin-bottom: 0;
+    }
+    &-search {
+      width: 100%;
+      height: 55px;
+      padding: 0 0px 0 30px;
+      color: #FFF;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, "Verdana", "DejaVu Sans", "Bitstream Vera Sans", sans-serif;
+      background: $primary-color;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      margin: 0;
+      border: 0;
+      font-size: 13px;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@include breakpoint-md {
+  .input {
+    &--theme {
+      &-search {
+        width: 100%;
+        height: 33px;
+        padding: 0;
+        font-size: 13px;
+        border-bottom: 3px solid $blue-dark-color;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 1);
+        }
+
+        &:focus {
+          border-color: darken($blue-dark-color, 5%);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

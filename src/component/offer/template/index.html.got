@@ -1,0 +1,38 @@
+{{ define "content" }}
+<div class="offer">
+    
+    {{ if .page_title }}
+        <div class="offer__index-heading">
+            <h4 class="offer__index-title">{{ if .page_icon }}<i class="{{ .page_icon }}"></i> {{ end }}{{ .page_title }}</h4>
+        </div>
+    {{ end }}
+
+    <div class="offer__list offer__list--mini">
+        {{ if eq .offers_count 0 }}
+            <p class="offer__list-not-exist">
+                К сожалению, по данному запросу ничего не найдено.
+            </p>
+        {{ end }}
+
+        {{ $0 := . }}
+        {{ range $i, $m := .offers }}
+        {{ set $0 "i" $i }}
+        {{ set $0 "offer" $m }}
+
+        {{ template "row_mini.html.got" $0 }}
+
+        {{ end }}
+
+        </div>
+
+        <div class="offer__pagination">
+            {{ if gt .prev_page -1 }}
+                <a href="{{ .prev_page_link }}" class="offer__pagination-prev">&#8592; Вернуться назад #{{ .prev_page }}</a>
+            {{ end }} 
+
+            {{ if eq (len .offers) 22 }}
+                <a href="{{ .next_page_link }}" class="offer__pagination-next">Просмотреть дальше #{{ .next_page }} &#8594;</a>
+            {{ end }}
+        </div>
+ </div>
+ {{ end }}

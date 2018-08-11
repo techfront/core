@@ -1,0 +1,9 @@
+<!-- Block Wrapper -->
+<div class="widget widget--type-ads-sidebar">
+    <!-- Block Content -->
+    <div class="widget__content">
+        <!-- Ad Block Body -->
+        <div class="ads-sidebar-widget">
+        </div>
+    </div>
+</div>

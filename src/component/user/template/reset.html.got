@@ -1,0 +1,16 @@
+{{ define "content" }}
+<div class="user">
+    <div class="user__reset">
+        <form action="/reset" method="post">
+            <h4 class="user__reset-title">Восстановление доступа</h4>
+            <div class="form-group">
+                {{ field "Ваш Email:" "user_email" "" "text" "class=input" }}
+            </div>
+
+            <div class="field">
+                <input type="submit" class="button" value="Отправить">
+            </div>
+        </form>
+    </div>
+</div>
+{{ end }}

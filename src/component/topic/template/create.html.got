@@ -1,0 +1,19 @@
+{{ define "content" }}
+    <div class="topic">
+        <div class="topic__create">
+        <form method="post">
+            <h4 class="topic__create-title">Создать топик</h4>
+            <div class="form-group">
+                {{ field "Добавьте ссылку, если она необходима:" "topic_url" .topic.Url "class='js-topic-submit--url-field input'"}}
+                {{ field "Заголовок топика:" "topic_name" .topic.Name "class='js-topic-submit--name-field input'" }}
+                {{ textarea "Небольшой комментарий или описание, так же можно добавить хэш-теги:" "topic_text" .topic.Text "class='input input--type-textarea'" }}
+                {{ select "Выберите тег:" "topic_id_format" .topic.FormatId .topic.FormatOptions }}
+            </div>
+            <input name="authenticity_token" type="hidden" value="{{.authenticity_token}}">
+            <div class="form__buttons">
+                <input type="submit" class="button" value="Отправить">
+            </div>
+        </form>
+        </div>
+    </div>
+{{ end }}

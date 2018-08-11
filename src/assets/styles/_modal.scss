@@ -1,0 +1,178 @@
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  &--hidden {
+    display: none;
+  }
+
+  &__body {
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.3);
+    position: relative;
+    max-width: 620px;
+    min-height: 420px;
+    width: 100%;
+    background: #fafafa url("/images/noise.gif");
+    margin: auto 20px;
+    top: 20px;
+  }
+
+  &__flex-container {
+    lost-flex-container: column;
+    &-item {
+      width: 100%;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    z-index: 99999;
+    right: 10px;
+    top: 0;
+    &-link {
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.6);
+      padding: 0 5px;
+      &:hover,
+      &:focus {
+        color: $base-color;
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    padding: 15px 30px;
+    margin-bottom: 15px;
+    &-title {
+      padding: 0;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  &__hero {
+    position: relative;
+    background: $secondary-color url("/images/pattern_create-profile.png");
+    width: 100%;
+
+    &-inner {
+      padding: 25px 30px;
+    }
+
+    &-title {
+      color: #FFF;
+      font-weight: 400;
+      padding: 0;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    &-descr {
+      color: #FFF;
+    }
+  }
+
+  &__content {
+    &-descr {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 13px;
+      a {
+        font-weight: 400;
+        text-decoration: underline;
+      }
+    }
+    &-inner {
+      padding: 30px 30px 20px;
+    }
+  }
+}
+
+@include breakpoint-sm {
+  .modal {
+    &__body {
+      border-radius: 3px;
+      margin: auto;
+      top: auto;
+    }
+    &__content {
+      min-height: 420px;
+      &-inner {
+        padding: 40px;
+      }
+    }
+    &__hero {
+      border-right: 1px solid $cloud-color;
+      &:before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 191px;
+        background: url("/images/hello.jpg") no-repeat;
+        background-position: 0 100%;
+        background-size: 100%;
+      }
+
+      &-inner {
+        padding: 27px 25px 0;
+      }
+    }
+    &__close {
+      &-link {
+        text-shadow: 0px 1px 0px #fff;
+        color: #777;
+        &:hover,
+        &:focus {
+          color: $secondary-color;
+        }
+      }
+    }
+    &__flex-container {
+      lost-flex-container: row;
+      align-items: stretch;
+      align-content: stretch;
+      &-item {
+        display: flex;
+        &--size {
+          &-2 {
+            lost-column: 2/12 0 30px flex;
+          }
+          &-6 {
+            lost-column: 6/12 0 30px flex;
+          }
+        }
+      }
+      &--no-spacing {
+        .modal__flex-container-item {
+          &--size {
+            &-2 {
+              lost-column: 2/12 0 0 flex;
+            }
+            &-6 {
+              lost-column: 6/12 0 0 flex;
+            }
+          }
+        }
+      }
+    }
+  }
+}

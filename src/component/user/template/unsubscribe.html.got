@@ -1,0 +1,24 @@
+{{ define "content" }}
+<div class="page">
+ <div class="page__item">
+     <div class="page__header">
+         <h2 class="page__title">Отписка от дайджеста<h2>
+     </div>
+     <div class="page__body">
+          <p>Вы действительно хотите отписаться от нашей уютной рассылки? Подтвердите действие, если это так.</p>	
+          <form action="/unsubscribe" method="post">
+            <div class="form-group">
+                {{ field "Ваш email-адрес:" "user_email" .user_email "class=input" }}
+            </div>
+
+            <div class="field">
+                <input type="submit" class="button" value="Отписаться!">
+            </div>
+        </form>
+     </div>
+     <div class="page__footer">
+         <div class="h-divider"></div>
+     </div>
+ </div>
+</div>
+{{ end }}

@@ -1,0 +1,113 @@
+{{ define "content" }}
+<div class="user">
+
+<div class="user__profile">
+
+      <div class="user__flex-container">
+          <div class="user__flex-container-item user__flex-container-item--size-7">
+              <div class="user__profile-hero">
+                  <div class="user__profile-hero-item">
+                      <img class="user__profile-avatar" src={{ .user.DisplayAvatar 64}} srcset="{{ .user.DisplayAvatar 128}} 2x" height="64" width="64">
+                  </div>
+
+                   <div class="user__profile-hero-item">
+                      <h1 class="user__profile-name">{{.user.Name}} {{ if .user.FullName }}<span class=user__profile-fullname>({{.user.FullName}})</span>{{ end }}</h1>
+
+                      <div class="user__profile-power">
+                        <span class="user__profile-power-points"><i class="icon-megaphone-1"></i>{{ displayfloat .user.Power }}</span>
+                        <span class="user__profile-power-title">сила</span>
+                      </div>
+                      <div class="user__profile-score">
+                        <span class="user__profile-score-points"><i class="icon-star-empty"></i>{{ displayfloat .user.Score }}</span>
+                        <span class="user__profile-score-title">карма</span>
+                      </div>
+
+                      <div class="user__profile-status h-visable h-visable--sm">
+                      {{ if .user.CheckOnline }}
+                      <div class="user__profile-status-online ">Онлайн</div>
+                      {{ else }}
+                      <div class="user__profile-status-offline">{{ .user.VerbСonjugation "Был" }} {{ timeago .user.VisitedAt }}</div>
+                      {{ end }}
+                      </div>
+              
+                      <p class="user__profile-about">{{ sanitize .user.Text }}</p>
+
+                      <p class="user__profile-date">{{ .user.VerbСonjugation "Присоеденился" }} {{timeago .user.CreatedAt}}.</p>
+
+                      <div class="user__profile-contact">
+                        <ul class="user__profile-contact-list">
+                          {{ range $i, $m := .user.Contacts }}
+                          <li class="user__profile-contact-item">
+                            <a href="{{ url $m.GetLinkHref }}" class="user__profile-contact-link user__profile-contact-link--{{ $m.Name }}" rel="nofollow"><i class="{{ $m.GetIconClass}}"></i><span class="user__profile-contact-link-title">{{ $m.GetLinkTitle }}</span></a>
+                          </li>
+                          {{ end }}
+                        </ul>
+                      </div> 
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="user__flex-container-item user__flex-container-item--size-5">
+              <div class="user__profile-actions">
+                <div class="user__profile-status h-hidden h-hidden--sm">
+                  {{ if .user.CheckOnline }}
+                  <div class="user__profile-status-online ">Онлайн</div>
+                  {{ else }}
+                  <div class="user__profile-status-offline">{{ .user.VerbСonjugation "Был" }} {{ timeago .user.VisitedAt }}</div>
+                  {{ end }}
+                  </div>
+                {{ if or (eq .current_user.Id .user.Id) (.current_user.Admin) }}
+                <a href="/users/{{.user.Id}}/update" class="user__profile-actions-button button button--theme-shy">Редактировать</a>
+                {{end }}
+                {{ if eq .current_user.Id .user.Id }}
+                <a href="/logout" method="post" class="user__profile-actions-button button button--theme-shy">Завершить сеанс</a>
+                {{ end }}
+              </div>
+          </div>
+      </div>
+
+    <div class="user__profile-activity">
+
+      {{ if not (eq (len .topics) 0) }}
+      {{ $0 := . }}
+      <div class="h-divider"></div>
+      
+      <div class="topic">
+        <div class="topic__header">
+          <h3 class="topic__header-title"><a class="topic__header-count" href="/topics/?u={{ .user.Id }}" title="Все топики {{.user.Name}}">{{ .user.TopicCount }}</a> {{ .user.DeclensionTopics }}:</h3>
+        </div>
+        <div class="topic__list topic__list--mini">
+          {{ range .topics }}
+          {{ set $0 "topic" . }}
+          {{ template "row_mini.html.got" $0 }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      {{ if not (eq (len .comments) 0) }}
+      <div class="h-divider h-divider--theme-invisible"></div>
+
+      {{ $0 := empty }}
+
+      <div class="comment">
+        <div class="comment__header">
+          <h3 class="comment__header-title"><a class="comment__header-count" href="/discussions/?u={{ .user.Id }}" title="Все комментарии {{.user.Name}}">{{ .user.CommentCount }}</a> {{ .user.DeclensionComments }}:</h3>
+        </div>
+        <ul class="comment__list">
+          {{ range .comments }}
+            {{ set $0 "comment" . }}
+
+              {{ template "comment.html.got" $0 }}
+
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+
+    <div class="h-divider h-divider--theme-invisible"></div>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,15 @@
+bin/*
+.idea/*
+db/backup/*
+db/migrate/2015-09-26-001524-Create-Database.sql
+secrets/*
+log/*
+
+node_modules
+bower_files
+
+bundle
+public/bundle
+public/images/favicons
+public/uploads
+tmp

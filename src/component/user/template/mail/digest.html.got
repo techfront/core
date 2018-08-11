@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css" rel="stylesheet" media="all">
+    /* Base ------------------------------ */
+    body, body *:not(br):not(tr):not(html) {
+      font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    body {
+      width: 100% !important;
+      height: 100%;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.42857143;
+      background-color: #ecf0f1;
+      color: #7f8c8d;
+      -webkit-text-size-adjust: none;
+    }
+    a {
+      color: #426fab;
+      text-decoration: underline;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: none;
+    }
+    /* Layout ------------------------------ */
+    .email-wrapper {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #ecf0f1;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    .email-content {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    /* Masthead ----------------------- */
+    .email-masthead {
+      padding: 25px 0;
+      text-align: center;
+    }
+    .email-masthead_logo {
+      max-width: 400px;
+      border: 0;
+    }
+    .email-masthead_name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+      text-shadow: 0 1px 0 white;
+    }
+    .email-logo {
+      height: 51px;
+      width: 51px;
+      display: block;
+      margin: 0 auto;
+      background-image: url("https://techfront.org/images/logos/mail_logo.png");
+      background-size: 51px;
+      color: transparent;
+    }
+    /* Body ------------------------------ */
+    .email-body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid #ecf0f1;
+      border-bottom: 1px solid #ecf0f1;
+      background-color: #FFF;
+    }
+    .email-body__inner {
+      width: 570px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .email-footer {
+      width: 570px;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+    .email-footer p {
+      color: #AEAEAE;
+    }
+    .body-action {
+      width: 100%;
+      margin: 30px auto;
+      padding: 0;
+      text-align: center;
+    }
+    .body-offer {
+      width: 100%;
+      margin: 30px auto;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #ecf0f1;
+    }
+    .body-dictionary {
+      width: 100%;
+      overflow: hidden;
+      margin: 20px auto 10px;
+      padding: 0;
+    }
+    .body-dictionary dd {
+      margin: 0 0 10px 0;
+    }
+    .body-dictionary dt {
+      clear: both;
+      color: #000;
+      font-weight: bold;
+    }
+    .body-dictionary dd {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+    .body-sub {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid #ecf0f1;
+    }
+    .content-cell {
+      padding: 35px;
+    }
+    .align-right {
+      text-align: right;
+    }
+    .align-left {
+      text-align: left;
+    }
+    /* Type ------------------------------ */
+    h1 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #000;
+      font-size: 19px;
+      font-weight: bold;
+    }
+    h2 {
+      margin-top: 0;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    h3 {
+      margin-top: 0;
+      color: #000;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #7f8c8d;
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+    p.sub {
+      max-width: 300px;
+      margin: 0 auto 15px;
+      font-size: 12px;
+    }
+    p.sub a,
+    p.center a {
+      color: #7f8c8d;
+    }
+    p.center {
+      text-align: center;
+    }
+    /* Data table ------------------------------ */
+    .data-wrapper {
+      width: 100%;
+      margin: 0;
+      padding: 35px 0;
+    }
+    .data-table {
+      width: 100%;
+      margin: 0;
+    }
+    .data-table th {
+      text-align: left;
+      padding: 0px 5px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ecf0f1;
+    }
+    .data-table th p {
+      margin: 0;
+      color: #9BA2AB;
+      font-size: 12px;
+    }
+    .data-table td {
+      padding: 10px 5px;
+      color: #7f8c8d;
+      font-size: 15px;
+      line-height: 18px;
+    }
+    /* Buttons ------------------------------ */
+    .button {
+      display: inline-block;
+      background-color: #426fab;
+      border-radius: 3px;
+      color: #ffffff;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 1.3333333;
+      padding: 14px 30px;
+      text-align: center;
+      text-decoration: none;
+      vertical-align: middle;
+      -webkit-text-size-adjust: none;
+      mso-hide: all;
+    }
+    .button.theme-green {
+      background: #27ae60;
+    }
+    /* Digest ------------------------------  */
+    .digest {
+      display: block;
+    }
+
+    .digest__item {
+      padding: 10px 0 20px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ecf0f1;
+    }
+
+    .digest__item-format {
+      display: inline-block;
+      background: #426fab;
+      padding: 4px 12px;
+      color: #FFF;
+      line-height: 1;
+      vertical-align: baseline;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 3px;
+      margin: 5px 0;
+    }
+
+    .digest__item-format--topic {
+      background: #2980b9;
+    }
+
+    .digest__item-format--news {
+      background: #34495e;
+    }
+
+    .digest__item-format--video {
+      background: #d44732;
+    }
+
+    .digest__item-format--project {
+      background: #1abc9c;
+    }
+
+    .digest__item-format--question {
+      background: #27ae60;
+    }
+
+    .digest__item-format--podcast {
+      background: #bdc3c7;
+    }
+
+    .digest__item-heading {
+      margin: 5px 0;
+      padding: 0;
+    }
+
+    .digest__item-heading-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+      font-size: 18px;
+    }
+
+    .digest__item-heading-link:hover,
+    .digest__item-heading-link:focus {
+      text-decoration: underline;
+     }
+
+    .digest__item-meta {
+      margin: 10px 0 5px;
+    }
+
+    .digest__item-meta-avatar {
+      display: inline;
+      border-radius: 3px;
+      margin-right: 1px;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+    }
+
+    .digest__item-meta-author {
+      display: inline;
+      font-weight: 600;
+      margin: 0;
+      color: #000;
+    }
+
+    .digest__item-meta-action {
+      color: #7f8c8d;
+      display: inline;
+      margin: 0;
+    }
+
+    .digest__item-meta-date {
+      color: #7f8c8d;
+      display: inline;
+      margin: 0;
+    }
+
+    /* Media Queries ------------------------------ */
+    @media only screen and (max-width: 600px) {
+      .email-body__inner,
+      .email-footer {
+        width: 100% !important;
+      }
+    }
+    @media only screen and (max-width: 500px) {
+      .button {
+        width: 100% !important;
+      }
+    }
+
+    @media only screen and (-o-min-device-pixel-ratio: 5/4),
+       only screen and (-webkit-min-device-pixel-ratio: 1.25),
+       only screen and (min--moz-device-pixel-ratio: 1.25),
+       only screen and (min-device-pixel-ratio: 1.25),
+       only screen and (min-resolution: 1.25dppx) {
+        .email-logo {
+          background-image: url("https://techfront.org/images/logos/mail_logo@2x.png") !important;
+      }
+    }
+  </style>
+</head>
+<body dir="ltr" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;height: 100%;margin: 0;font-size: 14px;line-height: 1.42857143;background-color: #ecf0f1;color: #7f8c8d;-webkit-text-size-adjust: none;width: 100% !important;">
+  <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" style="width: 100%;margin: 0;padding: 0;background-color: #ecf0f1;border-spacing: 0;border-collapse: collapse;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+    <tr>
+      <td align="center" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+        <table class="email-content" width="100%" cellpadding="0" cellspacing="0" style="width: 100%;margin: 0;padding: 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+          <!-- Logo -->
+          <tr>
+            <td class="email-masthead" style="padding: 25px 0;text-align: center;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+              <a class="email-logo" href="https://techfront.org" target="_blank" style="color: transparent;text-decoration: underline;height: 51px;width: 51px;display: block;margin: 0 auto;background-image: url(https://techfront.org/images/logos/mail_logo.png);background-size: 51px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">TF</a>
+            </td>
+          </tr>
+          <!-- Email Body -->
+          <tr>
+            <td class="email-body" width="100%" style="width: 100%;margin: 0;padding: 0;border-top: 1px solid #ecf0f1;border-bottom: 1px solid #ecf0f1;background-color: #FFF;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+              <table class="email-body__inner" align="center" width="570" cellpadding="0" cellspacing="0" style="width: 570px;margin: 0 auto;padding: 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                <!-- Body content -->
+                <tr>
+                  <td class="content-cell" style="padding: 35px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                    <h1 style="margin-top: 0;margin-bottom: 18px;color: #000;font-size: 19px;font-weight: bold;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Что нового?</h1>
+            
+                    <p style="margin-top: 0;margin-bottom: 18px;color: #7f8c8d;font-size: 16px;line-height: 1.5em;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Мы собрали лучшие топики и новости за последнее время в один дайджест, что бы вы были в курсе.</p>
+
+                  <div class="digest" style="display: block;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                    {{ range .topics }}
+                    <div class="digest__item" style="padding: 10px 0 20px;margin-bottom: 10px;border-bottom: 1px solid #ecf0f1;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                      {{ if .IsTopic }}
+                          <a href="https://techfront.org/format/topic" class="digest__item-format digest__item-format--topic" style="color: #FFF;text-decoration: none;display: inline-block;background: #2980b9;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Топик</a>
+                      {{ else if .IsNews }}
+                          <a href="https://techfront.org/format/news" class="digest__item-format digest__item-format--news" style="color: #FFF;text-decoration: none;display: inline-block;background: #34495e;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Новость</a>
+                      {{ else if .IsVideo }}
+                          <a href="https://techfront.org/format/video" class="digest__item-format digest__item-format--video" style="color: #FFF;text-decoration: none;display: inline-block;background: #d44732;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Видео</a>
+                      {{ else if .IsQuestion }}
+                          <a href="https://techfront.org/format/question" class="digest__item-format digest__item-format--question" style="color: #FFF;text-decoration: none;display: inline-block;background: #27ae60;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Вопрос</a>
+                      {{ else if .IsPodcast }}
+                          <a href="https://techfront.org/format/podcast" class="digest__item-format digest__item-format--podcast" style="color: #FFF;text-decoration: none;display: inline-block;background: #bdc3c7;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Подкаст</a>
+                      {{ else if .IsProject }}
+                          <a href="https://techfront.org/format/project" class="digest__item-format digest__item-format--project" style="color: #FFF;text-decoration: none;display: inline-block;background: #1abc9c;padding: 4px 12px;line-height: 1;vertical-align: baseline;font-size: 13px;border-radius: 3px;margin: 5px 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Проект</a>
+                      {{ end }}
+
+                      <p class="digest__item-heading" style="margin-top: 0;margin-bottom: 18px;color: #7f8c8d;font-size: 16px;line-height: 1.5em;margin: 5px 0;padding: 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;"><a href="{{ .RSSDestinationURL }}" target="_blank" class="digest__item-heading-link" style="color: #000;text-decoration: none;font-weight: 600;font-size: 18px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">{{ .Name }}</a></p>
+                      <div class="digest__item-meta" style="margin: 10px 0 5px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                        <img class="digest__item-meta-avatar" src="{{ .DisplayAvatar 32}}" width="16" height="16" style="display: inline;border-radius: 3px;margin-right: 1px;vertical-align: middle;width: 16px;height: 16px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                        <div class="digest__item-meta-author" style="display: inline;font-weight: 600;margin: 0;color: #000;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                          {{ .UserData.Name }}
+                        </div>
+                        <div class="digest__item-meta-action" style="color: #7f8c8d;display: inline;margin: 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                          {{ .VerbСonjugation "поделился" }}
+                        </div>
+                         <time class="digest__item-meta-date" datetime="{{ isotime .CreatedAt }}" style="color: #7f8c8d;display: inline;margin: 0;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">{{timeago .CreatedAt}}</time>
+                      </div>
+                    </div>
+                    {{ end }}
+                  </div>
+
+                    <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" style="width: 100%;margin: 30px auto;padding: 0;text-align: center;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                      <tr>
+                        <td align="center" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                            <a href="https://techfront.org/" class="button" target="_blank" style="color: #ffffff;text-decoration: none;display: inline-block;background-color: #426fab;border-radius: 3px;border: 1px solid transparent;white-space: nowrap;font-size: 15px;line-height: 1.3333333;padding: 14px 30px;text-align: center;vertical-align: middle;-webkit-text-size-adjust: none;mso-hide: all;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                              Просмотреть больше топиков
+                            </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    {{ if not (eq .digest_offer_code "") }}
+                      <table class="body-offer" align="center" width="570" cellpadding="0" cellspacing="0" style="width: 100%;margin: 30px auto;text-align: center;padding: 10px;border: 1px solid #ecf0f1;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                        <tr>
+                          <td align="center" style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                            <h2 class="align-left" style="margin-top: 0;color: #000;font-size: 16px;font-weight: bold;text-align: left;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Возможно вас также заинтересует:</h2>
+                            {{ .digest_offer_code }}
+                          </td><td style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                        </td></tr>
+                      </table>
+                    {{ end }}
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+              <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" style="width: 570px;margin: 0 auto;padding: 0;text-align: center;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                <tr>
+                  <td class="content-cell" style="padding: 35px;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                    <p class="sub center" style="margin-top: 0;margin-bottom: 18px;color: #AEAEAE;font-size: 12px;line-height: 1.5em;max-width: 300px;margin: 0 auto 15px;text-align: center;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">Вы получили это письмо, так как подписаны на рассылку дайджестов. {{`{{ render_dynamic_content(dynamic_html.link_unsubscribe) }}`}}.</p>
+                    <p class="sub center" style="margin-top: 0;margin-bottom: 18px;color: #AEAEAE;font-size: 12px;line-height: 1.5em;max-width: 300px;margin: 0 auto 15px;text-align: center;font-family: -apple-system,system-ui,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;-webkit-box-sizing: border-box;box-sizing: border-box;">
+                      &copy; Techfront 2017. Все права сохранены.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

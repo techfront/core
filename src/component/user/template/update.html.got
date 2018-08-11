@@ -1,0 +1,8 @@
+{{ define "content" }}
+<div class="user">
+    <div class="user__update">
+        <h4 class="user__update-title">Обновление профиля</h4>
+        {{ template "form.html.got" . }}
+    </div>
+</div>
+{{ end }}

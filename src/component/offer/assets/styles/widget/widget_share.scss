@@ -1,0 +1,71 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/breakpoints";
+
+.share-widget {
+  display: block;
+  width: 100%;
+  &__list {
+    lost-flex-container: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__item {
+    lost-column: 1/5 5 5px flex;
+    padding: 0;
+    &-link {
+      display: block;
+      text-align: center;
+      border-radius: 2px;
+      padding: 10px 0;
+      width: 100%;
+      background: $blue-color;
+      line-height: 1;
+      font-size: 16px;
+      color: #FFF;
+      &:hover,
+      &:focus {
+        color: #FFF;
+      }
+      &--vk {
+        background: #45668e;
+        &:hover,
+        &:focus {
+          background: darken(#45668e, 15%);
+        }
+      }
+      &--twitter {
+        background: #1da1f2;
+        &:hover,
+        &:focus {
+          background: darken(#1da1f2, 15%);
+        }
+      }
+      &--facebook {
+        background: #3b5998;
+        &:hover,
+        &:focus {
+          background: darken(#3b5998, 15%);
+        }
+      }
+      &--pocket {
+        background: #ef4056;
+        &:hover,
+        &:focus {
+          background: darken(#ef4056, 15%);
+        }
+      }
+      &--google-plus {
+        background: #dd4b39;
+        &:hover,
+        &:focus {
+          background: darken(#dd4b39, 15%);
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-sm {
+
+}

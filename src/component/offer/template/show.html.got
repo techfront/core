@@ -1,0 +1,219 @@
+{{ define "meta" }}
+<meta property="og:type" content="techfront:offer" />
+<meta property="og:title" content="{{ .offer.Name }}" />
+<meta property="og:description" content="{{.meta_desc }}" />
+<meta property="og:url" content="{{ .offer.FullURLShow }}" />
+{{ if .offer.Thumbnail }}
+<meta property="og:image" content={{ resizeimage .offer.Thumbnail "600x315"}} />
+<meta property="twitter:image" content={{ resizeimage .offer.Thumbnail "600x315"}} />
+{{ else }}
+<meta property="twitter:image" content="https://techfront.org/api/imageproxy/764x400/images/logos/og_logo.png" />
+{{ end }}
+<meta property="og:site_name" content="Техфронт" />
+<meta property="twitter:title" content="{{ .offer.Name }}" />
+<meta property="twitter:description" content="{{.meta_desc}}" />
+<meta property="twitter:site" content="@techfrontorg" />
+<meta property="twitter:url" content="{{ .offer.FullURLShow }}" />
+{{ if .offer.IsYouTube }}
+<meta property="twitter:player" content="{{ .offer.YouTubeURL }}" />
+<meta property="twitter:player:width" content="720" />
+<meta property="twitter:player:height" content="405" />
+<meta property="twitter:card" content="player" />
+{{ else }}
+<meta property="twitter:card" content="summary_large_image" />
+{{ end }}
+{{ end }}
+
+{{ define "content" }}
+<div class="offer">
+    <div class="offer__item offer__item--single">
+        <div class="offer__meta">
+            <div class="offer__meta-container">
+                <div class="offer__meta-row">
+                    <img src="{{ .offer.DisplayAvatar 35}}" srcset="{{ .offer.DisplayAvatar 70 }} 2x" class="offer__meta-item offer__meta-user-img" width="35" height="35" />
+                </div>
+            </div>
+            <div class="offer__meta-container">
+                <div class="offer__meta-row">
+                    <a href="/users/{{.offer.UserId}}" title="{{ .offer.UserData.Name }}" class="offer__meta-item offer__meta-user-link">{{ .offer.UserData.Name }}</a>
+                    <span class="offer__meta-item offer__meta-user-action">{{ .offer.VerbСonjugation "поделился" }}</span>
+                    <time class="offer__meta-item offer__meta-date" datetime="{{ isotime .offer.CreatedAt }}">{{timeago .offer.CreatedAt}}</time>
+                </div>
+                <div class="offer__meta-row">
+
+                    <div class="offer__meta-item offer__meta-voting offer__meta-voting--mobile">
+                        {{ if .current_user.Anon }}
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--up offer__meta-voting-vote--notvoted">
+                            <a href="/signup"><i class="icon-up-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--down offer__meta-voting-vote--notvoted">
+                            <a href="/signup"><i class="icon-down-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-info">
+                            <span class="offer__meta-voting-info-points">{{.offer.Points}}</span>
+                            <p class="offer__meta-voting-info-title">{{.offer.DeclensionPoints}}</p>
+                        </div>
+
+                        {{ else }}
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--up {{if not .current_user.CanUpvote }}offer__meta-voting-vote--disabled{{ end }} offer__meta-voting-vote--notvoted">
+                            <a href="/offers/{{.offer.Id}}/upvote" method="post" class="js-vote" data-vote="upvote" data-vote-id="offer-id-{{ .offer.Id }}-{{ .current_user.Id }}"><i class="icon-up-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--down {{if not .current_user.CanDownvote }}offer__meta-voting-vote--disabled{{ end }} offer__meta-voting-vote--notvoted">
+                            <a href="/offers/{{.offer.Id}}/downvote" method="post" class="js-vote" data-vote="downvote" data-vote-id="offer-id-{{ .offer.Id }}-{{ .current_user.Id }}"><i class="icon-down-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-info">
+                            <span class="offer__meta-voting-info-points">{{.offer.Points}}</span>
+                            <p class="offer__meta-voting-info-title">{{.offer.DeclensionPoints}}</p>
+                        </div>
+                        {{ end }}
+                    </div>
+
+                </div>
+                {{ if or (eq .current_user.Id .offer.UserId) (.current_user.Admin) }}
+                <div class="offer__meta-row offer__meta-row--buttons">
+                    <a href="/offers/{{.offer.Id}}/update" class="button button--theme-link"><i class="icon-pencil-1"></i>редактировать</a>
+                    <span class="v-divider">
+                        
+                    </span>
+                    <a href="/offers/{{.offer.Id}}/destroy" class="button button--theme-link" method="delete">удалить</a>
+                </div>
+                {{ end }}
+            </div>
+
+            <div class="offer__meta-container h-hidden h-hidden--sm">
+                <div class="offer__meta-row">
+                    <div class="offer__meta-voting">
+                        {{ if .current_user.Anon }}
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--up offer__meta-voting-vote--notvoted">
+                            <a href="/signup"><i class="icon-up-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--down offer__meta-voting-vote--notvoted">
+                            <a href="/signup"><i class="icon-down-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-info">
+                            <span class="offer__meta-voting-info-points">{{.offer.Points}}</span>
+                            <p class="offer__meta-voting-info-title">{{.offer.DeclensionPoints}}</p>
+                        </div>
+
+                        {{ else }}
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--up {{if not .current_user.CanUpvote }}offer__meta-voting-vote--disabled{{ end }} offer__meta-voting-vote--notvoted">
+                            <a href="/offers/{{.offer.Id}}/upvote" method="post" class="js-vote" data-vote="upvote" data-vote-id="offer-id-{{ .offer.Id }}-{{ .current_user.Id }}"><i class="icon-up-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-vote offer__meta-voting-vote--down {{if not .current_user.CanDownvote }}offer__meta-voting-vote--disabled{{ end }} offer__meta-voting-vote--notvoted">
+                            <a href="/offers/{{.offer.Id}}/downvote" method="post" class="js-vote" data-vote="downvote" data-vote-id="offer-id-{{ .offer.Id }}-{{ .current_user.Id }}"><i class="icon-down-bold"></i></a>
+                        </div>
+
+                        <div class="offer__meta-voting-info">
+                            <span class="offer__meta-voting-info-points">{{.offer.Points}}</span>
+                            <p class="offer__meta-voting-info-title">{{.offer.DeclensionPoints}}</p>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                <div class="offer__meta-row">
+                    {{ if not (.current_user.IsOfferFavorited .offer.Id) }}
+                    <a href="#" class="js-offer--favorite offer__meta-favorite" data-id-offer={{ .offer.Id }} data-id-user={{ .current_user.Id }} data-action="create" title="Добавить в избранное"><i class="icon-bookmark"></i> Прочитать позже</a>
+                    {{ else }}
+                    <a href="#" class="js-offer--favorite offer__meta-unfavorite" data-id-offer={{ .offer.Id }} data-id-user={{ .current_user.Id }} data-action="destroy" title="Удалить из избранного"><i class="icon-bookmark"></i> Удалить из избранного</a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="offer__flex-container">
+            <div class="offer__flex-container-item offer__flex-container-item--size-6">
+                <div class="offer__thumbnail offer__thumbnail--empty">
+                    <div class="offer__thumbnail-link">
+
+                        {{ if .offer.IsOffer }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-blue"><i class="icon-paper-plane"></i></div>
+                        {{ else if .offer.IsNews }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-asphalt"><i class="icon-newspaper"></i></div>
+                        {{ else if .offer.IsVideo }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-red"><i class="icon-video-1"></i></div>
+                        {{ else if .offer.IsQuestion }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-green"><i class="icon-help"></i></div>
+                        {{ else if .offer.IsPodcast }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-silver"><i class="icon-megaphone-1"></i></div>
+                        {{ else if .offer.IsProject }}
+                        <div class="offer__thumbnail-img-empty offer__thumbnail-img-empty--theme-turquoise"><i class="icon-code-1"></i></div>
+                        {{ end }}
+
+                    </div>>
+                </div>
+            </div>
+
+            <div class="offer__flex-container-item offer__flex-container-item--size-6">
+                <h1 class="offer__title">
+                    {{ .offer.Name }}
+                </h1>
+
+                {{ template "widget_share.html.got" . }}
+            </div>
+        </div>
+    
+        <div class="offer__summary">
+            {{ markup .offer.Text }}
+        </div>
+       
+    </div>
+</div>
+
+<div id="comment" class="comment">
+    {{ if .current_user.Anon }}
+    <div class="comment__register">
+        <div class="comment__register-block">
+            <div class="comment__register-block-inner">
+                <h4 class="comment__register-title">Войдите, что бы комментировать</h4>
+                <p class="comment__register-text">Только авторизованные пользователи могут оставлять комментарии.</p>
+                <a href="/login" class="js-modal-show button button--theme-pike" data-modal=".js-modal-target--user-login">Войти</a>
+            </div>
+        </div>
+        <div class="comment__register-block">
+            <div class="comment__register-block-inner">
+                <h4 class="comment__register-title">Или создайте новый профиль</h4>
+                <p class="comment__register-text">После регистрации откроется возможность комментировать и создавать офферы.</p>
+                <a href="/signup" class="js-modal-show button" data-modal=".js-modal-target--user-create">Создать профиль</a>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if not (eq .offer.CommentCount 0) }}
+    <div class="comment__header">
+        <h4 class="comment__header-title">{{.offer.DisplayCommentCount}} {{.offer.DeclensionComments}}:</h4>
+    </div>
+    {{ else if .current_user.CanComment }}
+    <div class="comment__header">
+        <h4 class="comment__header-title">Пока никто не комментировал...</h4>
+    </div>
+    {{ end }}
+
+    {{ if .current_user.CanComment }}
+    {{ template "form_embed.html.got" . }}
+    {{ end }}
+
+    <ul class="comment__list">
+        {{ $0 := . }}
+        {{ range .comments }}
+        {{ set $0 "comment" . }}
+        {{ template "comment.html.got" $0 }}
+        {{ end }}
+    </ul>
+</div>
+
+<div class="h-divider h-divider--theme-invisible"></div>
+
+{{ end }}

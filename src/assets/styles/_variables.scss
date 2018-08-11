@@ -1,0 +1,61 @@
+//
+// Variables
+// --------------------------------------------------
+
+// Flat Colors
+
+$dark-color: #000;
+$cloud-color: #ecf0f1;
+$silver-color: #bdc3c7;
+$concrete-color: #95a5a6;
+$asbestos-color: #7f8c8d;
+$blue-color: #2980b9;
+$blue-dark-color: darken($blue-color, 8%);
+$orange-color: #ff5e16;
+$pumpkin-color: #d35400;
+$red-color: #d44732;
+$red-dark-color: #c0392b;
+$green-color: #27ae60;
+$yellow-color: #f1c40f;
+$turquoise-color: #1abc9c;
+$asphalt-color: #34495e;
+$asphalt-dark-color: #2c3e50;
+
+// Base Colors
+$base-color: $dark-color;
+
+$gray-border-color: $cloud-color;
+$gray-text-color: $concrete-color;
+
+$footer-color: $asphalt-color;
+
+$primary-color: $blue-color;
+$secondary-color: $red-color;
+
+// Brand Colors
+$telegram-brand-color: #0088cc;
+$whatsapp-brand-color: #25d366;
+$twitter-brand-color: #1da1f2;
+$facebook-brand-color: #3b5998;
+$github-brand-color: #333333;
+$vkontakte-brand-color: #45668e;
+$viber-brand-color: #8f5db7;
+$youtube-brand-color: #cd201f;
+$skype-brand-color: #00aff0;
+
+// Breakpoints
+
+$layout-gutter-xs: 20px;
+$layout-width-xs:  420px;
+
+$layout-gutter-sm: 20px;
+$layout-width-sm:  680px;
+$layout-width-max-sm:  679px;
+
+$layout-gutter-md: 20px;
+$layout-width-md:  980px;
+$layout-width-max-md:  979px;
+
+$layout-gutter-lg: 20px;
+$layout-width-lg:  1280px;
+$layout-width-max-lg: 1279px;
